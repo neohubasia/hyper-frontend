@@ -1,0 +1,383 @@
+extends ../layout/layout-main
+block block-content
+  // Hero Section Begin
+  section.hero.mt-4
+    include ../layout/layout-search-1
+  // Categories Section Begin
+  section.categories
+    .container
+      .row
+        .categories__slider.owl-carousel
+          .col-lg-3
+            .categories__item.set-bg(data-setbg='img/categories/cat-1.jpg')
+              h5
+                a(href='#') Fresh Fruit
+          .col-lg-3
+            .categories__item.set-bg(data-setbg='img/categories/cat-2.jpg')
+              h5
+                a(href='#') Dried Fruit
+          .col-lg-3
+            .categories__item.set-bg(data-setbg='img/categories/cat-3.jpg')
+              h5
+                a(href='#') Vegetables
+          .col-lg-3
+            .categories__item.set-bg(data-setbg='img/categories/cat-4.jpg')
+              h5
+                a(href='#') drink fruits
+          .col-lg-3
+            .categories__item.set-bg(data-setbg='img/categories/cat-5.jpg')
+              h5
+                a(href='#') drink fruits
+  // Categories Section End
+  // Featured Section Begin
+  section.featured.spad
+    .container
+      .row
+        .col-lg-12
+          .section-title
+            h2 Featured Product
+          .featured__controls
+            ul
+              li.active(data-filter='*') All
+              li(data-filter='.oranges') Oranges
+              li(data-filter='.fresh-meat') Fresh Meat
+              li(data-filter='.vegetables') Vegetables
+              li(data-filter='.fastfood') Fastfood
+      .row.featured__filter
+        .col-lg-3.col-md-4.col-sm-6.mix.oranges.fresh-meat
+          .featured__item
+            .featured__item__pic.set-bg(data-setbg='img/featured/feature-1.jpg')
+              ul.featured__item__pic__hover
+                li
+                  a(href='#')
+                    i.fa.fa-heart
+                li
+                  a(href='#')
+                    i.fa.fa-retweet
+                li
+                  a(href='#')
+                    i.fa.fa-shopping-cart
+            .featured__item__text
+              h6
+                a(href='#') Crab Pool Security
+              h5 $30.00
+        .col-lg-3.col-md-4.col-sm-6.mix.vegetables.fastfood
+          .featured__item
+            .featured__item__pic.set-bg(data-setbg='img/featured/feature-2.jpg')
+              ul.featured__item__pic__hover
+                li
+                  a(href='#')
+                    i.fa.fa-heart
+                li
+                  a(href='#')
+                    i.fa.fa-retweet
+                li
+                  a(href='#')
+                    i.fa.fa-shopping-cart
+            .featured__item__text
+              h6
+                a(href='#') Crab Pool Security
+              h5 $30.00
+        .col-lg-3.col-md-4.col-sm-6.mix.vegetables.fresh-meat
+          .featured__item
+            .featured__item__pic.set-bg(data-setbg='img/featured/feature-3.jpg')
+              ul.featured__item__pic__hover
+                li
+                  a(href='#')
+                    i.fa.fa-heart
+                li
+                  a(href='#')
+                    i.fa.fa-retweet
+                li
+                  a(href='#')
+                    i.fa.fa-shopping-cart
+            .featured__item__text
+              h6
+                a(href='#') Crab Pool Security
+              h5 $30.00
+        .col-lg-3.col-md-4.col-sm-6.mix.fastfood.oranges
+          .featured__item
+            .featured__item__pic.set-bg(data-setbg='img/featured/feature-4.jpg')
+              ul.featured__item__pic__hover
+                li
+                  a(href='#')
+                    i.fa.fa-heart
+                li
+                  a(href='#')
+                    i.fa.fa-retweet
+                li
+                  a(href='#')
+                    i.fa.fa-shopping-cart
+            .featured__item__text
+              h6
+                a(href='#') Crab Pool Security
+              h5 $30.00
+        .col-lg-3.col-md-4.col-sm-6.mix.fresh-meat.vegetables
+          .featured__item
+            .featured__item__pic.set-bg(data-setbg='img/featured/feature-5.jpg')
+              ul.featured__item__pic__hover
+                li
+                  a(href='#')
+                    i.fa.fa-heart
+                li
+                  a(href='#')
+                    i.fa.fa-retweet
+                li
+                  a(href='#')
+                    i.fa.fa-shopping-cart
+            .featured__item__text
+              h6
+                a(href='#') Crab Pool Security
+              h5 $30.00
+        .col-lg-3.col-md-4.col-sm-6.mix.oranges.fastfood
+          .featured__item
+            .featured__item__pic.set-bg(data-setbg='img/featured/feature-6.jpg')
+              ul.featured__item__pic__hover
+                li
+                  a(href='#')
+                    i.fa.fa-heart
+                li
+                  a(href='#')
+                    i.fa.fa-retweet
+                li
+                  a(href='#')
+                    i.fa.fa-shopping-cart
+            .featured__item__text
+              h6
+                a(href='#') Crab Pool Security
+              h5 $30.00
+        .col-lg-3.col-md-4.col-sm-6.mix.fresh-meat.vegetables
+          .featured__item
+            .featured__item__pic.set-bg(data-setbg='img/featured/feature-7.jpg')
+              ul.featured__item__pic__hover
+                li
+                  a(href='#')
+                    i.fa.fa-heart
+                li
+                  a(href='#')
+                    i.fa.fa-retweet
+                li
+                  a(href='#')
+                    i.fa.fa-shopping-cart
+            .featured__item__text
+              h6
+                a(href='#') Crab Pool Security
+              h5 $30.00
+        .col-lg-3.col-md-4.col-sm-6.mix.fastfood.vegetables
+          .featured__item
+            .featured__item__pic.set-bg(data-setbg='img/featured/feature-8.jpg')
+              ul.featured__item__pic__hover
+                li
+                  a(href='#')
+                    i.fa.fa-heart
+                li
+                  a(href='#')
+                    i.fa.fa-retweet
+                li
+                  a(href='#')
+                    i.fa.fa-shopping-cart
+            .featured__item__text
+              h6
+                a(href='#') Crab Pool Security
+              h5 $30.00
+  // Featured Section End
+  // Banner Begin
+  .banner
+    .container
+      .row
+        .col-lg-6.col-md-6.col-sm-6
+          .banner__pic
+            img(src='img/banner/banner-1.jpg' alt='')
+        .col-lg-6.col-md-6.col-sm-6
+          .banner__pic
+            img(src='img/banner/banner-2.jpg' alt='')
+  // Banner End
+  // Latest Product Section Begin
+  section.latest-product.spad
+    .container
+      .row
+        .col-lg-4.col-md-6
+          .latest-product__text
+            h4 Latest Products
+            .latest-product__slider.owl-carousel
+              .latest-prdouct__slider__item
+                a.latest-product__item(href='#')
+                  .latest-product__item__pic
+                    img(src='img/latest-product/lp-1.jpg' alt='')
+                  .latest-product__item__text
+                    h6 Crab Pool Security
+                    span $30.00
+                a.latest-product__item(href='#')
+                  .latest-product__item__pic
+                    img(src='img/latest-product/lp-2.jpg' alt='')
+                  .latest-product__item__text
+                    h6 Crab Pool Security
+                    span $30.00
+                a.latest-product__item(href='#')
+                  .latest-product__item__pic
+                    img(src='img/latest-product/lp-3.jpg' alt='')
+                  .latest-product__item__text
+                    h6 Crab Pool Security
+                    span $30.00
+              .latest-prdouct__slider__item
+                a.latest-product__item(href='#')
+                  .latest-product__item__pic
+                    img(src='img/latest-product/lp-1.jpg' alt='')
+                  .latest-product__item__text
+                    h6 Crab Pool Security
+                    span $30.00
+                a.latest-product__item(href='#')
+                  .latest-product__item__pic
+                    img(src='img/latest-product/lp-2.jpg' alt='')
+                  .latest-product__item__text
+                    h6 Crab Pool Security
+                    span $30.00
+                a.latest-product__item(href='#')
+                  .latest-product__item__pic
+                    img(src='img/latest-product/lp-3.jpg' alt='')
+                  .latest-product__item__text
+                    h6 Crab Pool Security
+                    span $30.00
+        .col-lg-4.col-md-6
+          .latest-product__text
+            h4 Top Rated Products
+            .latest-product__slider.owl-carousel
+              .latest-prdouct__slider__item
+                a.latest-product__item(href='#')
+                  .latest-product__item__pic
+                    img(src='img/latest-product/lp-1.jpg' alt='')
+                  .latest-product__item__text
+                    h6 Crab Pool Security
+                    span $30.00
+                a.latest-product__item(href='#')
+                  .latest-product__item__pic
+                    img(src='img/latest-product/lp-2.jpg' alt='')
+                  .latest-product__item__text
+                    h6 Crab Pool Security
+                    span $30.00
+                a.latest-product__item(href='#')
+                  .latest-product__item__pic
+                    img(src='img/latest-product/lp-3.jpg' alt='')
+                  .latest-product__item__text
+                    h6 Crab Pool Security
+                    span $30.00
+              .latest-prdouct__slider__item
+                a.latest-product__item(href='#')
+                  .latest-product__item__pic
+                    img(src='img/latest-product/lp-1.jpg' alt='')
+                  .latest-product__item__text
+                    h6 Crab Pool Security
+                    span $30.00
+                a.latest-product__item(href='#')
+                  .latest-product__item__pic
+                    img(src='img/latest-product/lp-2.jpg' alt='')
+                  .latest-product__item__text
+                    h6 Crab Pool Security
+                    span $30.00
+                a.latest-product__item(href='#')
+                  .latest-product__item__pic
+                    img(src='img/latest-product/lp-3.jpg' alt='')
+                  .latest-product__item__text
+                    h6 Crab Pool Security
+                    span $30.00
+        .col-lg-4.col-md-6
+          .latest-product__text
+            h4 Review Products
+            .latest-product__slider.owl-carousel
+              .latest-prdouct__slider__item
+                a.latest-product__item(href='#')
+                  .latest-product__item__pic
+                    img(src='img/latest-product/lp-1.jpg' alt='')
+                  .latest-product__item__text
+                    h6 Crab Pool Security
+                    span $30.00
+                a.latest-product__item(href='#')
+                  .latest-product__item__pic
+                    img(src='img/latest-product/lp-2.jpg' alt='')
+                  .latest-product__item__text
+                    h6 Crab Pool Security
+                    span $30.00
+                a.latest-product__item(href='#')
+                  .latest-product__item__pic
+                    img(src='img/latest-product/lp-3.jpg' alt='')
+                  .latest-product__item__text
+                    h6 Crab Pool Security
+                    span $30.00
+              .latest-prdouct__slider__item
+                a.latest-product__item(href='#')
+                  .latest-product__item__pic
+                    img(src='img/latest-product/lp-1.jpg' alt='')
+                  .latest-product__item__text
+                    h6 Crab Pool Security
+                    span $30.00
+                a.latest-product__item(href='#')
+                  .latest-product__item__pic
+                    img(src='img/latest-product/lp-2.jpg' alt='')
+                  .latest-product__item__text
+                    h6 Crab Pool Security
+                    span $30.00
+                a.latest-product__item(href='#')
+                  .latest-product__item__pic
+                    img(src='img/latest-product/lp-3.jpg' alt='')
+                  .latest-product__item__text
+                    h6 Crab Pool Security
+                    span $30.00
+  // Latest Product Section End
+  // Blog Section Begin
+  section.from-blog.spad
+    .container
+      .row
+        .col-lg-12
+          .section-title.from-blog__title
+            h2 From The Blog
+      .row
+        .col-lg-4.col-md-4.col-sm-6
+          .blog__item
+            .blog__item__pic
+              img(src='img/blog/blog-1.jpg' alt='')
+            .blog__item__text
+              ul
+                li
+                  i.fa.fa-calendar-o
+                  |  May 4,2019
+                li
+                  i.fa.fa-comment-o
+                  |  5
+              h5
+                a(href='#') Cooking tips make cooking simple
+              p
+                | Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat
+        .col-lg-4.col-md-4.col-sm-6
+          .blog__item
+            .blog__item__pic
+              img(src='img/blog/blog-2.jpg' alt='')
+            .blog__item__text
+              ul
+                li
+                  i.fa.fa-calendar-o
+                  |  May 4,2019
+                li
+                  i.fa.fa-comment-o
+                  |  5
+              h5
+                a(href='#') 6 ways to prepare breakfast for 30
+              p
+                | Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat
+        .col-lg-4.col-md-4.col-sm-6
+          .blog__item
+            .blog__item__pic
+              img(src='img/blog/blog-3.jpg' alt='')
+            .blog__item__text
+              ul
+                li
+                  i.fa.fa-calendar-o
+                  |  May 4,2019
+                li
+                  i.fa.fa-comment-o
+                  |  5
+              h5
+                a(href='#') Visit the clean farm in the US
+              p
+                | Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat
+  // Blog Section End
+  

@@ -1,0 +1,187 @@
+extends ../layout/layout-main
+block block-content
+  // Hero Section Begin
+  section.hero.hero-normal.mt-4
+    include ../layout/layout-search-2
+  // Blog Details Hero Begin
+  section.blog-details-hero.set-bg(data-setbg='img/blog/details/details-hero.jpg')
+    .container
+      .row
+        .col-lg-12
+          .blog__details__hero__text
+            h2 The Moment You Need To Remove Garlic From The Menu
+            ul
+              li By Michael Scofield
+              li January 14, 2019
+              li 8 Comments
+  // Blog Details Hero End
+  // Blog Details Section Begin
+  section.blog-details.spad
+    .container
+      .row
+        .col-lg-4.col-md-5.order-md-1.order-2
+          .blog__sidebar
+            .blog__sidebar__search
+              form(action='#')
+                input(type='text' placeholder='Search...')
+                button(type='submit')
+                  span.icon_search
+            .blog__sidebar__item
+              h4 Categories
+              ul
+                li
+                  a(href='#') All
+                li
+                  a(href='#') Beauty (20)
+                li
+                  a(href='#') Food (5)
+                li
+                  a(href='#') Life Style (9)
+                li
+                  a(href='#') Travel (10)
+            .blog__sidebar__item
+              h4 Recent News
+              .blog__sidebar__recent
+                a.blog__sidebar__recent__item(href='#')
+                  .blog__sidebar__recent__item__pic
+                    img(src='img/blog/sidebar/sr-1.jpg' alt='')
+                  .blog__sidebar__recent__item__text
+                    h6
+                      | 09 Kinds Of Vegetables
+                      br
+                      |  Protect The Liver
+                    span MAR 05, 2019
+                a.blog__sidebar__recent__item(href='#')
+                  .blog__sidebar__recent__item__pic
+                    img(src='img/blog/sidebar/sr-2.jpg' alt='')
+                  .blog__sidebar__recent__item__text
+                    h6
+                      | Tips You To Balance
+                      br
+                      |  Nutrition Meal Day
+                    span MAR 05, 2019
+                a.blog__sidebar__recent__item(href='#')
+                  .blog__sidebar__recent__item__pic
+                    img(src='img/blog/sidebar/sr-3.jpg' alt='')
+                  .blog__sidebar__recent__item__text
+                    h6
+                      | 4 Principles Help You Lose 
+                      br
+                      | Weight With Vegetables
+                    span MAR 05, 2019
+            .blog__sidebar__item
+              h4 Search By
+              .blog__sidebar__item__tags
+                a(href='#') Apple
+                a(href='#') Beauty
+                a(href='#') Vegetables
+                a(href='#') Fruit
+                a(href='#') Healthy Food
+                a(href='#') Lifestyle
+        .col-lg-8.col-md-7.order-md-1.order-1
+          .blog__details__text
+            img(src='img/blog/details/details-pic.jpg' alt='')
+            p
+              | Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet
+              | dui. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Mauris blandit
+              | aliquet elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget consectetur
+              | sed, convallis at tellus. Sed porttitor lectus nibh. Donec sollicitudin molestie malesuada.
+              | Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Proin eget tortor risus.
+              | Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis
+              | quis ac lectus. Donec sollicitudin molestie malesuada. Nulla quis lorem ut libero malesuada
+              | feugiat. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
+            h3
+              | The corner window forms a place within a place that is a resting point within the large
+              | space.
+            p
+              | The study area is located at the back with a view of the vast nature. Together with the other
+              | buildings, a congruent story has been managed in which the whole has a reinforcing effect on
+              | the components. The use of materials seeks connection to the main house, the adjacent
+              | stables
+          .blog__details__content
+            .row
+              .col-lg-6
+                .blog__details__author
+                  .blog__details__author__pic
+                    img(src='img/blog/details/details-author.jpg' alt='')
+                  .blog__details__author__text
+                    h6 Michael Scofield
+                    span Admin
+              .col-lg-6
+                .blog__details__widget
+                  ul
+                    li
+                      span Categories:
+                      |  Food
+                    li
+                      span Tags:
+                      |  All, Trending, Cooking, Healthy Food, Life Style
+                  .blog__details__social
+                    a(href='#')
+                      i.fa.fa-facebook
+                    a(href='#')
+                      i.fa.fa-twitter
+                    a(href='#')
+                      i.fa.fa-google-plus
+                    a(href='#')
+                      i.fa.fa-linkedin
+                    a(href='#')
+                      i.fa.fa-envelope
+  // Blog Details Section End
+  // Related Blog Section Begin
+  section.related-blog.spad
+    .container
+      .row
+        .col-lg-12
+          .section-title.related-blog-title
+            h2 Post You May Like
+      .row
+        .col-lg-4.col-md-4.col-sm-6
+          .blog__item
+            .blog__item__pic
+              img(src='img/blog/blog-1.jpg' alt='')
+            .blog__item__text
+              ul
+                li
+                  i.fa.fa-calendar-o
+                  |  May 4,2019
+                li
+                  i.fa.fa-comment-o
+                  |  5
+              h5
+                a(href='#') Cooking tips make cooking simple
+              p
+                | Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat
+        .col-lg-4.col-md-4.col-sm-6
+          .blog__item
+            .blog__item__pic
+              img(src='img/blog/blog-2.jpg' alt='')
+            .blog__item__text
+              ul
+                li
+                  i.fa.fa-calendar-o
+                  |  May 4,2019
+                li
+                  i.fa.fa-comment-o
+                  |  5
+              h5
+                a(href='#') 6 ways to prepare breakfast for 30
+              p
+                | Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat
+        .col-lg-4.col-md-4.col-sm-6
+          .blog__item
+            .blog__item__pic
+              img(src='img/blog/blog-3.jpg' alt='')
+            .blog__item__text
+              ul
+                li
+                  i.fa.fa-calendar-o
+                  |  May 4,2019
+                li
+                  i.fa.fa-comment-o
+                  |  5
+              h5
+                a(href='#') Visit the clean farm in the US
+              p
+                | Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat
+  // Related Blog Section End

@@ -1,0 +1,99 @@
+extends ../layout/layout-main
+block block-content
+  // Hero Section Begin
+  section.hero.hero-normal.mt-4
+    include ../layout/layout-search-2
+  // Breadcrumb Section Begin
+  section.breadcrumb-section.set-bg(data-setbg='img/breadcrumb.jpg')
+    .container
+      .row
+        .col-lg-12.text-center
+          .breadcrumb__text
+            h2 Shopping Cart
+            .breadcrumb__option
+              a(href='./index.html') Home
+              span Shopping Cart
+  // Breadcrumb Section End
+  // Shoping Cart Section Begin
+  section.shoping-cart.spad
+    .container
+      .row
+        .col-lg-12
+          .shoping__cart__table
+            table
+              thead
+                tr
+                  th.shoping__product Products
+                  th Price
+                  th Quantity
+                  th Total
+                  th
+              tbody
+                tr
+                  td.shoping__cart__item
+                    img(src='img/cart/cart-1.jpg' alt='')
+                    h5 Vegetable&rsquo;s Package
+                  td.shoping__cart__price
+                    | $55.00
+                  td.shoping__cart__quantity
+                    .quantity
+                      .pro-qty
+                        input(type='text' value='1')
+                  td.shoping__cart__total
+                    | $110.00
+                  td.shoping__cart__item__close
+                    span.icon_close
+                tr
+                  td.shoping__cart__item
+                    img(src='img/cart/cart-2.jpg' alt='')
+                    h5 Fresh Garden Vegetable
+                  td.shoping__cart__price
+                    | $39.00
+                  td.shoping__cart__quantity
+                    .quantity
+                      .pro-qty
+                        input(type='text' value='1')
+                  td.shoping__cart__total
+                    | $39.99
+                  td.shoping__cart__item__close
+                    span.icon_close
+                tr
+                  td.shoping__cart__item
+                    img(src='img/cart/cart-3.jpg' alt='')
+                    h5 Organic Bananas
+                  td.shoping__cart__price
+                    | $69.00
+                  td.shoping__cart__quantity
+                    .quantity
+                      .pro-qty
+                        input(type='text' value='1')
+                  td.shoping__cart__total
+                    | $69.99
+                  td.shoping__cart__item__close
+                    span.icon_close
+      .row
+        .col-lg-12
+          .shoping__cart__btns
+            a.primary-btn.cart-btn(href='#') CONTINUE SHOPPING
+            a.primary-btn.cart-btn.cart-btn-right(href='#')
+              span.icon_loading
+              |                             Upadate Cart
+        .col-lg-6
+          .shoping__continue
+            .shoping__discount
+              h5 Discount Codes
+              form(action='#')
+                input(type='text' placeholder='Enter your coupon code')
+                button.site-btn(type='submit') APPLY COUPON
+        .col-lg-6
+          .shoping__checkout
+            h5 Cart Total
+            ul
+              li
+                | Subtotal 
+                span $454.98
+              li
+                | Total 
+                span $454.98
+            a.primary-btn(href='#') PROCEED TO CHECKOUT
+  // Shoping Cart Section End

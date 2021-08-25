@@ -1,0 +1,95 @@
+footer.footer.spad
+  .container
+    .row
+      .col-lg-3.col-md-6.col-sm-6
+        .footer__about
+          .footer__about__logo
+            a(href='./index.html')
+              img(src='img/logo/it-marketplace-500x280.png' alt='')
+          ul
+            li Address: 60-49 Road 11378 New York
+            li Phone: +65 11.188.888
+            li Email: hello@colorlib.com
+      .col-lg-4.col-md-6.col-sm-6.offset-lg-1
+        .footer__widget
+          h6 Useful Links
+          ul
+            li
+              a(href='#') About Us
+            li
+              a(href='#') About Our Shop
+            li
+              a(href='#') Secure Shopping
+            li
+              a(href='#') Delivery infomation
+            li
+              a(href='#') Privacy Policy
+            li
+              a(href='#') Our Sitemap
+          ul
+            li
+              a(href='#') Who We Are
+            li
+              a(href='#') Our Services
+            li
+              a(href='#') Projects
+            li
+              a(href='#') Contact
+            li
+              a(href='#') Innovation
+            li
+              a(href='#') Testimonials
+      .col-lg-4.col-md-12
+        .footer__widget
+          h6 Join Our Newsletter Now
+          p Get E-mail updates about our latest shop and special offers.
+          form(action='#')
+            input(type='text' placeholder='Enter your mail')
+            button.site-btn(type='submit') Subscribe
+          .footer__widget__social
+            a(href='#')
+              i.fa.fa-facebook
+            a(href='#')
+              i.fa.fa-instagram
+            a(href='#')
+              i.fa.fa-twitter
+            a(href='#')
+              i.fa.fa-pinterest
+    .row
+      .col-lg-12
+        .footer__copyright
+          .footer__copyright__text
+            p
+              // Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.
+              | Copyright &copy;
+              script.
+                document.write(new Date().getFullYear());
+              |  All rights reserved | This
+              |                                 template is made with 
+              i.fa.fa-heart(aria-hidden='true')
+              |  by 
+              a(href='https://colorlib.com' target='_blank') Colorlib
+              // Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.
+          .footer__copyright__payment
+            img(src='img/payment-item.png' alt='')
+// Footer Section End
+// Js Plugins
+script(src='js/jquery-3.3.1.min.js')
+script(src='js/bootstrap.min.js')
+script(src='js/jquery.nice-select.min.js')
+script(src='js/jquery-ui.min.js')
+script(src='js/jquery.slicknav.js')
+script(src='js/mixitup.min.js')
+script(src='js/owl.carousel.min.js')
+script(src='js/main.js')
+script.
+  window.onscroll = function () { myFunction() };
+  var navbar = document.getElementById("navbar");
+  var sticky = navbar.offsetTop || 47;
+  function myFunction() {
+    if (window.pageYOffset >= sticky) {
+      navbar.classList.add("sticky")
+    } else {
+      navbar.classList.remove("sticky");
+    }
+  }

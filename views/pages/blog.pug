@@ -1,0 +1,209 @@
+extends ../layout/layout-main
+block block-content
+  // Hero Section Begin
+  section.hero.hero-normal.mt-4
+    include ../layout/layout-search-2
+  // Breadcrumb Section Begin
+  section.breadcrumb-section.set-bg(data-setbg='img/breadcrumb.jpg')
+    .container
+      .row
+        .col-lg-12.text-center
+          .breadcrumb__text
+            h2 Blog
+            .breadcrumb__option
+              a(href='./index.html') Home
+              span Blog
+  // Breadcrumb Section End
+  // Blog Section Begin
+  section.blog.spad
+    .container
+      .row
+        .col-lg-4.col-md-5
+          .blog__sidebar
+            .blog__sidebar__search
+              form(action='#')
+                input(type='text' placeholder='Search...')
+                button(type='submit')
+                  span.icon_search
+            .blog__sidebar__item
+              h4 Categories
+              ul
+                li
+                  a(href='#') All
+                li
+                  a(href='#') Beauty (20)
+                li
+                  a(href='#') Food (5)
+                li
+                  a(href='#') Life Style (9)
+                li
+                  a(href='#') Travel (10)
+            .blog__sidebar__item
+              h4 Recent News
+              .blog__sidebar__recent
+                a.blog__sidebar__recent__item(href='#')
+                  .blog__sidebar__recent__item__pic
+                    img(src='img/blog/sidebar/sr-1.jpg' alt='')
+                  .blog__sidebar__recent__item__text
+                    h6
+                      | 09 Kinds Of Vegetables
+                      br
+                      |  Protect The Liver
+                    span MAR 05, 2019
+                a.blog__sidebar__recent__item(href='#')
+                  .blog__sidebar__recent__item__pic
+                    img(src='img/blog/sidebar/sr-2.jpg' alt='')
+                  .blog__sidebar__recent__item__text
+                    h6
+                      | Tips You To Balance
+                      br
+                      |  Nutrition Meal Day
+                    span MAR 05, 2019
+                a.blog__sidebar__recent__item(href='#')
+                  .blog__sidebar__recent__item__pic
+                    img(src='img/blog/sidebar/sr-3.jpg' alt='')
+                  .blog__sidebar__recent__item__text
+                    h6
+                      | 4 Principles Help You Lose 
+                      br
+                      | Weight With Vegetables
+                    span MAR 05, 2019
+            .blog__sidebar__item
+              h4 Search By
+              .blog__sidebar__item__tags
+                a(href='#') Apple
+                a(href='#') Beauty
+                a(href='#') Vegetables
+                a(href='#') Fruit
+                a(href='#') Healthy Food
+                a(href='#') Lifestyle
+        .col-lg-8.col-md-7
+          .row
+            .col-lg-6.col-md-6.col-sm-6
+              .blog__item
+                .blog__item__pic
+                  img(src='img/blog/blog-2.jpg' alt='')
+                .blog__item__text
+                  ul
+                    li
+                      i.fa.fa-calendar-o
+                      |  May 4,2019
+                    li
+                      i.fa.fa-comment-o
+                      |  5
+                  h5
+                    a(href='#') 6 ways to prepare breakfast for 30
+                  p
+                    | Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam
+                    | quaerat
+                  a.blog__btn(href='#')
+                    | READ MORE 
+                    span.arrow_right
+            .col-lg-6.col-md-6.col-sm-6
+              .blog__item
+                .blog__item__pic
+                  img(src='img/blog/blog-3.jpg' alt='')
+                .blog__item__text
+                  ul
+                    li
+                      i.fa.fa-calendar-o
+                      |  May 4,2019
+                    li
+                      i.fa.fa-comment-o
+                      |  5
+                  h5
+                    a(href='#') Visit the clean farm in the US
+                  p
+                    | Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam
+                    | quaerat
+                  a.blog__btn(href='#')
+                    | READ MORE 
+                    span.arrow_right
+            .col-lg-6.col-md-6.col-sm-6
+              .blog__item
+                .blog__item__pic
+                  img(src='img/blog/blog-1.jpg' alt='')
+                .blog__item__text
+                  ul
+                    li
+                      i.fa.fa-calendar-o
+                      |  May 4,2019
+                    li
+                      i.fa.fa-comment-o
+                      |  5
+                  h5
+                    a(href='#') Cooking tips make cooking simple
+                  p
+                    | Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam
+                    | quaerat
+                  a.blog__btn(href='#')
+                    | READ MORE 
+                    span.arrow_right
+            .col-lg-6.col-md-6.col-sm-6
+              .blog__item
+                .blog__item__pic
+                  img(src='img/blog/blog-4.jpg' alt='')
+                .blog__item__text
+                  ul
+                    li
+                      i.fa.fa-calendar-o
+                      |  May 4,2019
+                    li
+                      i.fa.fa-comment-o
+                      |  5
+                  h5
+                    a(href='#') Cooking tips make cooking simple
+                  p
+                    | Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam
+                    | quaerat
+                  a.blog__btn(href='#')
+                    | READ MORE 
+                    span.arrow_right
+            .col-lg-6.col-md-6.col-sm-6
+              .blog__item
+                .blog__item__pic
+                  img(src='img/blog/blog-4.jpg' alt='')
+                .blog__item__text
+                  ul
+                    li
+                      i.fa.fa-calendar-o
+                      |  May 4,2019
+                    li
+                      i.fa.fa-comment-o
+                      |  5
+                  h5
+                    a(href='#') The Moment You Need To Remove Garlic From The Menu
+                  p
+                    | Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam
+                    | quaerat
+                  a.blog__btn(href='#')
+                    | READ MORE 
+                    span.arrow_right
+            .col-lg-6.col-md-6.col-sm-6
+              .blog__item
+                .blog__item__pic
+                  img(src='img/blog/blog-6.jpg' alt='')
+                .blog__item__text
+                  ul
+                    li
+                      i.fa.fa-calendar-o
+                      |  May 4,2019
+                    li
+                      i.fa.fa-comment-o
+                      |  5
+                  h5
+                    a(href='#') Cooking tips make cooking simple
+                  p
+                    | Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam
+                    | quaerat
+                  a.blog__btn(href='#')
+                    | READ MORE 
+                    span.arrow_right
+            .col-lg-12
+              .product__pagination.blog__pagination
+                a(href='#') 1
+                a(href='#') 2
+                a(href='#') 3
+                a(href='#')
+                  i.fa.fa-long-arrow-right
+  // Blog Section End
