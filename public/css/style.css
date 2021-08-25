@@ -1139,13 +1139,13 @@ ol {
 	top: 13px;
 	height: 1px;
 	width: 5px;
-	background: #dd2222;
+	background: #15a5b5;
 	content: "";
 }
 
 .price-range-wrap .range-slider .price-input input {
 	font-size: 16px;
-	color: #dd2222;
+	color: #15a5b5;
 	font-weight: 700;
 	max-width: 20%;
 	border: none;
@@ -1172,15 +1172,18 @@ ol {
 	box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
 	outline: none;
 	cursor: pointer;
+	z-index: auto;
 }
 
 .price-range-wrap .price-range .ui-slider-range {
-	background: #dd2222;
+	background: #15a5b5;
 	border-radius: 0;
 }
 
 .price-range-wrap .price-range .ui-slider-range.ui-corner-all.ui-widget-header:last-child {
-	background: #dd2222;
+	background: #15a5b5;
+	position: relative;
+	z-index: auto;
 }
 
 .sidebar__item__color {
@@ -1298,7 +1301,7 @@ ol {
 .product__discount__item__pic .product__discount__percent {
 	height: 45px;
 	width: 45px;
-	background: #dd2222;
+	background: #15a5b5;
 	border-radius: 50%;
 	font-size: 14px;
 	color: #fff;
@@ -1705,13 +1708,13 @@ ol {
 }
 
 .product__details__text .product__details__rating span {
-	color: #dd2222;
+	color: #15a5b5;
 	margin-left: 4px;
 }
 
 .product__details__text .product__details__price {
 	font-size: 30px;
-	color: #dd2222;
+	color: #15a5b5;
 	font-weight: 600;
 	margin-bottom: 15px;
 }
@@ -1754,7 +1757,7 @@ ol {
 }
 
 .product__details__text ul li span samp {
-	color: #dd2222;
+	color: #15a5b5;
 }
 
 .product__details__text ul li .share {
@@ -2064,7 +2067,7 @@ ol {
 
 .shoping__checkout ul li span {
 	font-size: 18px;
-	color: #dd2222;
+	color: #15a5b5;
 	float: right;
 }
 
@@ -2124,7 +2127,7 @@ ol {
 }
 
 .checkout__input p span {
-	color: #dd2222;
+	color: #15a5b5;
 }
 
 .checkout__input input {
@@ -2268,7 +2271,7 @@ ol {
 
 .checkout__order .checkout__order__total span {
 	float: right;
-	color: #dd2222;
+	color: #15a5b5;
 }
 
 .checkout__order button {
@@ -3016,6 +3019,7 @@ ol {
 	.header .container {
 		position: relative;
 		background: #fff;
+		z-index: 1;
 	}
 
 	.humberger__menu__wrapper {
@@ -3332,6 +3336,7 @@ ol {
 	.header .container {
 		position: relative;
 		background: #fff;
+		z-index: 1;
 	}
 
 	.humberger__menu__wrapper {

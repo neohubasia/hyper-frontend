@@ -1,0 +1,56 @@
+doctype html
+head
+  // Required meta tags
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  title itemplate | marketplace
+  // Icon
+  link(rel='icon' href='../img/logo/shopping-cart-logo-500x500.png' type='image/png' sizes='16x16')
+  // Google Font
+  link(href='https://fonts.googleapis.com/css2?family=Cairo:wght@200;300&display=swap' rel='stylesheet')
+  // Stylesheet
+  link(rel='stylesheet' href='../fonts/icomoon/style.css')
+  link(rel='stylesheet' href='../css/owl.carousel.min.css')
+  // Bootstrap CSS
+  link(rel='stylesheet' href='../css/bootstrap.min.css')
+  // Style
+  link(rel='stylesheet' href='../css/auth-style.css')
+.d-lg-flex.half
+  .bg.order-1.order-md-2(style="background-image: url('../img/auth/itemplate-login.png');")
+  .contents.order-2.order-md-1
+    .container
+      .row.align-items-center.justify-content-center
+        .col-md-7
+          .mb-4
+            h3 Sign In
+            p.mb-4 Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.
+          form(action='#' method='post')
+            .form-group.first
+              label(for='username') Username
+              input#username.form-control(type='email' autocomplete="off")
+            .form-group.last.mb-3
+              label(for='password') Password
+              input#password.form-control(type='password')
+            .d-flex.mb-5.align-items-center
+              label.control.control--checkbox.mb-0
+                span.caption Remember me
+                input(type='checkbox' checked='checked')
+                .control__indicator
+              span.ml-auto
+                a.forgot-pass(href='#') Forgot Password
+            input.btn.btn-block.btn-info(type='submit' value='Log In')
+            span.d-block.text-center.my-4.text-muted &mdash; or &mdash;
+            .social-login
+              a.facebook.btn.d-flex.justify-content-center.align-items-center(href='#')
+                span.icon-facebook.mr-3
+                |  Login with Facebook
+              a.twitter.btn.d-flex.justify-content-center.align-items-center(href='#')
+                span.icon-twitter.mr-3
+                |  Login with Twitter
+              a.google.btn.d-flex.justify-content-center.align-items-center(href='#')
+                span.icon-google.mr-3
+                |  Login with Google
+script(src='../js/jquery-3.3.1.min.js')
+script(src='../js/popper.min.js')
+script(src='../js/bootstrap.min.js')
+script(src='../js/auth/common.js')

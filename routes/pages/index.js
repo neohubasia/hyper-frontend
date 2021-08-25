@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/t', function(req, res, next) {
-  res.render('test', { title: 'Express' });
+router.get('/auth/login', function(req, res, next) {
+  res.render('auth/login', { title: 'Express' });
 });
 
 /* GET home page. */
