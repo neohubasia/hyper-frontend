@@ -35,7 +35,7 @@
         if auth
           a.ml-3(href='#')
             i.fa.fa-user
-            span= auth.fullname
+            span= auth.displayName
         else 
           a.ml-3(href='./auth/login')
             i.fa.fa-sign-in
@@ -116,7 +116,7 @@
             .header__top__right__auth.mr-3.isUser
               a(href='#')
                 i.fa.fa-user
-                span= auth.fullname
+                span= auth.displayName
           .header__top__right__auth.isLogin
             if auth
               a(href='./auth/logout')

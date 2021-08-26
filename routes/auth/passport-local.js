@@ -24,7 +24,7 @@ module.exports = new LocalStrategy({
             return done(null, false, { message: 'Incorrect password.' });
         }
         return done(null, {
-            fullname: "Demo User", username: "test@gmail.com", password: "test123"
+            displayName: "Demo User", username: "test@gmail.com", password: "test123"
         });
     }
 );

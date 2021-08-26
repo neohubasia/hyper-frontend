@@ -13,7 +13,7 @@ module.exports  = new FacebookStrategy({
     //   if (err) { return done(err); }
     //   done(null, user);
     // });
-      console.log(accessToken, refreshToken, profile)
-      done(null, profile)
+      // console.log(accessToken, refreshToken, profile)
+      // done(null, profile)
   }
 )
