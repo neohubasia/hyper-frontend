@@ -16,11 +16,16 @@ router.post(url.login,
   })
 );
 
+router.get('/auth/facebook', passport.authenticate('facebook'));
+
 router.get('/auth/facebook/callback',
   passport.authenticate('facebook', {
-    successRedirect: '/',
-    failureRedirect: url.login
-  })
+      failureRedirect: url.login
+    }
+  ),
+  function(req, res) {
+   res.redirect('/');
+  }
 );
 
 router.get('/auth/google',
