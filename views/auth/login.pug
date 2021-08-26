@@ -24,13 +24,13 @@ head
           .mb-4
             h3 Sign In
             p.mb-4 one done, it saves a lot of ___ in future
-          form(action='#' method='post')
+          form(action='/auth/login' method='post')
             .form-group.first
               label(for='username') Username
-              input#username.form-control(type='email' autocomplete="off")
+              input#username.form-control(type='email' name="email" autocomplete="off" required autofocus)
             .form-group.last.mb-3
               label(for='password') Password
-              input#password.form-control(type='password')
+              input#password.form-control(type='password' name="password" required)
             .d-flex.mb-5.align-items-center
               label.control.control--checkbox.mb-0
                 span.caption Remember me

@@ -30,10 +30,16 @@
           a(href='#') Spanis
         li
           a(href='#') English
+
     .header__top__right__auth
-      a.ml-3(href='./auth/login')
-        i.fa.fa-user
-        |  Login
+        if auth
+          a.ml-3(href='#')
+            i.fa.fa-user
+            span= auth.fullname
+        else 
+          a.ml-3(href='./auth/login')
+            i.fa.fa-sign-in
+            span  Login
   nav.humberger__menu__nav.mobile-menu
     ul
       li.active
@@ -55,6 +61,9 @@
         a(href='./blog') Blog
       li
         a(href='./contact') Contact
+      if auth
+        li
+          a(href='/auth/logout') Logout
   #mobile-menu-wrap
   .header__top__right__social
     a(href='#')
@@ -103,10 +112,20 @@
                 a(href='#') Spanis
               li
                 a(href='#') English
-          .header__top__right__auth
-            a(href='./auth/login')
-              i.fa.fa-user
-              |  Login
+          if auth
+            .header__top__right__auth.mr-3.isUser
+              a(href='#')
+                i.fa.fa-user
+                span= auth.fullname
+          .header__top__right__auth.isLogin
+            if auth
+              a(href='./auth/logout')
+                i.fa.fa-sign-out
+                span Logout
+            else 
+              a(href='./auth/login')
+                i.fa.fa-sign-in
+                span  Login
 header#navbar.header.bg-white.border-bottom
   .container
     .row

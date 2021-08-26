@@ -1,9 +1,17 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-const fs = require('fs');
-var cookieParser = require('cookie-parser');
+var fs = require('fs');
 var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var expressSession = require('express-session')({
+  secret: 'it3mq1at3mark3tq1ac3',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { _expires: (10 * 60 * 1000) } //  10 minutes
+});
+var passport = require('passport');
+var passportLocal = require("./routes/auth/passpost-local");
 
 var app = express();
 var routeModules = [];
@@ -15,7 +23,30 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
 app.use(cookieParser());
+app.use(expressSession);
+
+app.use(function(req, res, next) {
+  var msgs = req.session.messages || [];
+  res.locals.messages = msgs;
+  res.locals.hasMessages = !! msgs.length;
+  req.session.messages = [];
+  next();
+});
+
+app.use(passport.initialize());
+app.use(passport.authenticate('session'));
+passport.use(passportLocal);
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 fs.readdirSync(__dirname + '/routes/pages').forEach(function(name){
