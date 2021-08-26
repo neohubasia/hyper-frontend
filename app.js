@@ -4,6 +4,7 @@ var path = require('path');
 var fs = require('fs');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var cookieSession = require('cookie-session');
 var expressSession = require('express-session')({
   secret: 'it3mq1at3mark3tq1ac3',
   resave: false,
@@ -13,6 +14,7 @@ var expressSession = require('express-session')({
 var passport = require('passport');
 var passportLocal = require("./routes/auth/passport-local");
 var passportFacebook = require("./routes/auth/passport-facebook");
+var passportGoogle = require("./routes/auth/passport-google");
 
 var app = express();
 var routeModules = [];
@@ -27,6 +29,10 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(cookieParser());
 app.use(expressSession);
+// app.use(cookieSession({
+//   name: 'google-auth-session',
+//   keys: ['key1', 'key2']
+// }));
 
 app.use(function(req, res, next) {
   var msgs = req.session.messages || [];
@@ -40,6 +46,7 @@ app.use(passport.initialize());
 app.use(passport.authenticate('session'));
 passport.use(passportLocal);
 passport.use(passportFacebook);
+passport.use(passportGoogle);
 
 passport.serializeUser(function(user, done) {
   done(null, user);

@@ -23,6 +23,21 @@ router.get('/auth/facebook/callback',
   })
 );
 
+router.get('/auth/google',
+  passport.authenticate('google', {
+    scope: ['email', 'profile']
+  }
+));
+
+router.get('/auth/google/callback',
+  passport.authenticate('google', {
+    failureRedirect: url.login
+  }),
+  function (req, res) {
+    res.redirect('/')
+  }
+);
+
 router.get(url.logout, function(req, res, next) {
   req.logout();
   res.redirect('/');
