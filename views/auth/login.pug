@@ -41,7 +41,8 @@ head
             input.btn.btn-block.btn-info(type='submit' value='Log In')
             span.d-block.text-center.my-4.text-muted &mdash; or &mdash;
             .social-login
-              a.facebook.btn.d-flex.justify-content-center.align-items-center(href='#')
+              fb:login-button(scope='public_profile,email' onlogin='checkLoginState();')
+              a.facebook.btn.d-flex.justify-content-center.align-items-center(href='/auth/facebook/callback')
                 span.icon-facebook.mr-3
                 |  Login with Facebook
               a.twitter.btn.d-flex.justify-content-center.align-items-center(href='#')

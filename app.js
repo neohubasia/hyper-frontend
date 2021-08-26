@@ -11,7 +11,8 @@ var expressSession = require('express-session')({
   cookie: { _expires: (10 * 60 * 1000) } //  10 minutes
 });
 var passport = require('passport');
-var passportLocal = require("./routes/auth/passpost-local");
+var passportLocal = require("./routes/auth/passport-local");
+var passportFacebook = require("./routes/auth/passport-facebook");
 
 var app = express();
 var routeModules = [];
@@ -38,6 +39,7 @@ app.use(function(req, res, next) {
 app.use(passport.initialize());
 app.use(passport.authenticate('session'));
 passport.use(passportLocal);
+passport.use(passportFacebook);
 
 passport.serializeUser(function(user, done) {
   done(null, user);
