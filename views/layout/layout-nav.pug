@@ -136,26 +136,26 @@ header#navbar.header.bg-white.border-bottom
       .col-lg-6
         nav.header__menu
           ul
-            li.active
+            li.header__menu__link.home__menu__link
               a(href='./') Home
-            li
+            li.header__menu__link#shop__menu__link
               a(href='./shop') Shop
-            li
+            li.header__menu__link#pages__menu__link
               a(href='#')
                 | Pages 
                 i.fa.fa-chevron-down
               ul.header__menu__dropdown
-                li
+                li.header__menu__link#shop-details__menu__link
                   a(href='./shop-details') Shop Details
-                li
+                li.header__menu__link#shop-cart__menu__link
                   a(href='./shop-cart') Shoping Cart
-                li
+                li.header__menu__link#checkout__menu__link
                   a(href='./checkout') Check Out
-                li
+                li.header__menu__link#blog-details__menu__link
                   a(href='./blog-details') Blog Details
-            li
+            li.header__menu__link#blog__menu__link
               a(href='./blog') Blog
-            li
+            li.header__menu__link#contact__menu__link
               a(href='./contact') Contact
       .col-lg-3
         .header__cart
