@@ -1,11 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+var conf = require("../../_data/config.json");
 
 var url = { login: "/auth/login", logout: "/auth/logout" };
 
 router.get(url.login, function(req, res, next) {
-  res.render('auth/login', { title: 'Login Page' });
+  res.render('auth/login', { ...conf.app, data: {} });
 });
 
 router.post(url.login,

@@ -182,9 +182,19 @@ ol {
 	border: none;
 }
 
-/* Preloder */
+#preloader {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: #fff url("../img/preloading/position-loader.gif") no-repeat center;
+	z-index: 999999;
+}
 
-#preloder {
+/* Preloader */
+
+/* #preloader {
 	position: fixed;
 	width: 100%;
 	height: 100%;
@@ -192,7 +202,7 @@ ol {
 	left: 0;
 	z-index: 999999;
 	background: #fff;
-}
+} */
 
 .loader {
 	width: 50px;
@@ -256,6 +266,7 @@ ol {
 
 .header__top {
 	background: #15a5b5;
+	margin-top: -7px;
 }
 
 .header__top__left {

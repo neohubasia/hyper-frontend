@@ -46,7 +46,7 @@ h2 {
     height: 100vh;
 }
 
-@media (max-width: 991.98px) {
+@media (max-width: 991px) {
     .half .bg {
         height: 500px;
     }
@@ -57,11 +57,44 @@ h2 {
     width: 50%;
 }
 
-@media (max-width: 1199.98px) {
+@media (max-width: 1199px) {
 
     .half .contents,
     .half .bg {
         width: 100%;
+    }
+}
+
+.half .bg a {
+    position: absolute;
+    top: 70%;
+    left: 75%;
+    color: white;
+    line-height: 2.5;
+    text-decoration: none;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+/* 
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .half .bg a {
+    top: 70%;
+    left: 75%;
+  }
+} */
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .half .bg a {
+        top: 50%;
+        left: 50%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .half .bg a {
+        top: 50%;
+        left: 50%;
     }
 }
 
@@ -96,6 +129,11 @@ h2 {
 .half .bg .form-group.first {
     border-top-left-radius: 7px;
     border-top-right-radius: 7px;
+}
+
+.half .contents .form-group.middle,
+.half .bg .form-group.middle {
+    border-bottom: none;
 }
 
 .half .contents .form-group.last,

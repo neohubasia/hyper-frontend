@@ -3,7 +3,7 @@ head
   // Required meta tags
   meta(charset='utf-8')
   meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
-  title itemplate | marketplace
+  title= TITLE
   // Icon
   link(rel='icon' href='../img/logo/shopping-cart-logo-500x500.png' type='image/png' sizes='16x16')
   // Google Font
@@ -15,15 +15,23 @@ head
   link(rel='stylesheet' href='../css/bootstrap.min.css')
   // Style
   link(rel='stylesheet' href='../css/auth-style.css')
+
 .d-lg-flex.half
-  .bg.order-1.order-md-2(style="background-image: url('https://via.placeholder.com/1200x1800?text=1200x1800');")
+  .bg.order-1.order-md-2(style="background-image: url('https://via.placeholder.com/1200x1800/f5f5f5/777');")
+    a.btn.btn-info(href="/auth/signup")
+      span Sign Up
   .contents.order-2.order-md-1
     .container
       .row.align-items-center.justify-content-center
         .col-md-7
           .mb-4
-            h3 Sign In
-            p.mb-4 one done, it saves a lot of ___ in future
+            h3 Log In
+            if error
+              p.text-danger.mb-3= error
+            if success
+              p.text-success.mb-3= success
+            if notice
+              p.text-info.mb-3= notice
           form(action='/auth/login' method='post')
             .form-group.first
               label(for='username') Username
@@ -45,12 +53,13 @@ head
               a.facebook.btn.d-flex.justify-content-center.align-items-center(href='/auth/facebook')
                 span.icon-facebook.mr-3
                 |  Login with Facebook
-              //- a.twitter.btn.d-flex.justify-content-center.align-items-center(href='#')
-              //-   span.icon-twitter.mr-3
-              //-   |  Login with Twitter
               a.google.btn.d-flex.justify-content-center.align-items-center(href='/auth/google')
                 span.icon-google.mr-3
                 |  Login with Google
+              //- a.twitter.btn.d-flex.justify-content-center.align-items-center(href='#')
+              //-   span.icon-twitter.mr-3
+              //-   |  Login with Twitter
+              
 script(src='../js/jquery-3.3.1.min.js')
 script(src='../js/popper.min.js')
 script(src='../js/bootstrap.min.js')

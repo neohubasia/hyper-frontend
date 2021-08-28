@@ -56,6 +56,24 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
+// Session-persisted message middleware
+app.use(function(req, res, next){
+  var error = req.session.error,
+      success = req.session.success;
+      notice = req.session.notice,
+
+  delete req.session.error;
+  delete req.session.success;
+  delete req.session.notice;
+
+  if (error) res.locals.error = error;
+  if (notice) res.locals.notice = notice;
+  if (success) res.locals.success = success;
+
+  next();
+});
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 fs.readdirSync(__dirname + '/routes/pages').forEach(function(name){

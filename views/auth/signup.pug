@@ -1,0 +1,79 @@
+doctype html
+head
+  // Required meta tags
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  title= TITLE
+  // Icon
+  link(rel='icon' href='../img/logo/shopping-cart-logo-500x500.png' type='image/png' sizes='16x16')
+  // Google Font
+  link(href='https://fonts.googleapis.com/css2?family=Cairo:wght@200;300&display=swap' rel='stylesheet')
+  // Stylesheet
+  link(rel='stylesheet' href='../fonts/icomoon/style.css')
+  link(rel='stylesheet' href='../css/owl.carousel.min.css')
+  // Bootstrap CSS
+  link(rel='stylesheet' href='../css/bootstrap.min.css')
+  // Style
+  link(rel='stylesheet' href='../css/auth-style.css')
+
+.d-lg-flex.half
+  .bg.order-1.order-md-2(style="background-image: url('https://via.placeholder.com/1200x1800/f5f5f5/777');")
+    a.btn.btn-info(href="/auth/login")
+      span Log In
+  .contents.order-2.order-md-1
+    .container
+      .row.align-items-center.justify-content-center
+        .col-md-7
+          .mb-4
+            h3 Sign Up
+            p.mb-4 one done, it saves a lot of ___ in future
+          form.validatedForm(action='/auth/signup' method='post')
+            .form-group.first
+              label(for='first_name') First Name
+              input#first_name.form-control(type='text' name="first_name" onchange="checkValue();" autocomplete="off" maxlength="30" required autofocus)
+            .form-group.middle
+              label(for='last_name') Last Name
+              input#last_name.form-control(type='text' name="last_name" onchange="checkValue();" autocomplete="off" length="30" required)
+            .form-group.middle
+              label(for='email') Email
+              input#email.form-control(type='email' name="email" onchange="checkValue();" autocomplete="off" required)
+            .form-group.middle
+              label(for='password') Password
+              input#password.form-control(type='password' name="password" onchange="checkValue();" required)
+            .form-group.last.mb-3
+              label(for='confirm_password') Confirm Password
+              input#confirm_password.form-control(type='password' name="confirm_password" onchange="checkValue();" required)
+            .div.mb-3
+              span.match-password
+            .d-flex.mb-5.align-items-center
+              label.control.control--checkbox.mb-0
+                span.caption I aggree to the Terms of Service and Privacy Policy.
+                input#check_aggree(type='checkbox' value="1" onchange="checkValue();")
+                .control__indicator
+            input.btn.btn-block.btn-info#submit(type='submit' value='Sign Up' disabled)
+              
+script(src='../js/jquery-3.3.1.min.js')
+script(src='../js/popper.min.js')
+script(src='../js/bootstrap.min.js')
+script(src='../js/auth/common.js')
+script.
+
+    function checkValue() {
+        var pass  = $('#password').val();
+        var ch_pass  = $('#confirm_password').val();
+
+        if(pass == ch_pass) {
+            $('.match-password').html("");
+
+            if ($('#first_name').val() && $('#last_name').val() && $('#email').val() && pass && ch_pass && $('#check_aggree').prop('checked')) {
+                $('#submit').removeAttr('disabled')
+            }
+            else {
+                $('#submit').attr('disabled', true);
+            }
+        } 
+        else { 
+            $('.match-password').html("Entered Password is not matching. Try Again!");
+            $('#submit').attr('disabled', true);
+        }
+    }

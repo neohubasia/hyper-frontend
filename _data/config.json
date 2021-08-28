@@ -1,4 +1,7 @@
 {
+    "app": {
+        "TITLE": "itemplate | marketplace"
+    },
     "jwt": {
         "TEXT": "9E0HU8L48",
         "HASH": "SHA256",

@@ -1,30 +1,36 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var axiosHandler = require("../../library/axios-handler");
 
 module.exports = new LocalStrategy({
        usernameField: 'email',
-       passwordField: 'password'
+       passwordField: 'password',
+       passReqToCallback: true
     },
-    function (username, password, done) {
-        // User.findOne({ username: username }, function(err, user) {
-        //   if (err) { return done(err); }
-        //   if (!user) {
-        //     return done(null, false, { message: 'Incorrect username.' });
-        //   }
-        //   if (!user.validPassword(password)) {
-        //     return done(null, false, { message: 'Incorrect password.' });
-        //   }
-        //   return done(null, user);
+    async function (req, username, password, done) {
+        const bodyData = { email: username, password: password };
+
+        // way 1
+        // axiosHandler.module.post('/c_api/customer_login', bodyData)
+        // .then(response => {
+        //     if (!response.data.auth) {
+        //         done(null, false, { message: 'Incorrect username.' });
+        //     }
+        //     done(null, response.data.user);
+        // })
+        // .catch(error => {
+        //    console.log(error)
+        //    done(error);
         // });
-      
-        if (username != "test@gmail.com") {
-            return done(null, false, { message: 'Incorrect username.' });
+
+        // way 2
+        const response = await axiosHandler.module.post('/c_api/customer_login', bodyData);
+
+        if (!response.data.auth) {
+            req.session.error = 'Could not log user in. Please try again!'; //inform user could not log them in
+            return done(null, false, { message: 'Incorrect username or password!' });
         }
-        if (password != "test123") {
-            return done(null, false, { message: 'Incorrect password.' });
-        }
-        return done(null, {
-            displayName: "Demo User", username: "test@gmail.com", password: "test123"
-        });
+        req.session.success = 'You are successfully logged in ' + username + '!';
+        return done(null, response.data.user);
     }
 );

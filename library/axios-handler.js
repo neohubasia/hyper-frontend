@@ -4,6 +4,8 @@ const axios = require('axios');
 const conf = require('../_data/config.json');
 const API_URL = process.env.API_URL;
 
+console.log(API_URL)
+
 // Step-1: Create a new Axios instance with a custom config.
 // The timeout is set to 10s. If the request takes longer than
 // that then the request will be aborted.
@@ -26,11 +28,11 @@ const requestToken = async () => {
     });
 };
 
-const requestHandler = request => {
+const requestHandler = async (request) => {
     // Token will be dynamic so we can use any app-specific way to always   
     // fetch the new token before making the call
-    const token = await requestToken();
-    request.headers.Authorization = `Bearer ${token}`;  
+    const response = await requestToken();
+    request.headers.Authorization = `Bearer ${response.data.token}`;  
   
     return request;
 };
@@ -62,4 +64,4 @@ customAxios.interceptors.request.use(
 
 
 // Step-4: Export the newly created Axios instance to be used in different locations.
-export default customAxios;
+exports.module = customAxios;
