@@ -19,7 +19,7 @@ router.post(url.login,
 
 router.get('/auth/facebook',
   passport.authenticate('facebook', {
-    scope: ['email', 'username']
+    scope: ['email']
   }
 ));
 
