@@ -8,6 +8,7 @@ module.exports  = new FacebookStrategy({
     clientSecret: FACEBOOK_APP_SECRET,
     callbackURL: "https://itemplate-marketplace.herokuapp.com/auth/facebook/callback",
     // profileFields: ['id', 'displayName', 'emails', 'photos'],
+    profileFields: ['id', 'email', 'username', 'displayName', 'name', 'gender', 'profileUrl', 'photos'],
     passReqToCallback: true
   },
   function(request, accessToken, refreshToken, profile, done) {
