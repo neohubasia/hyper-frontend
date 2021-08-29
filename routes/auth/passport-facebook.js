@@ -14,7 +14,6 @@ module.exports  = new FacebookStrategy({
     passReqToCallback: true
   },
   function(request, accessToken, refreshToken, profile, done) {
-    console.log("Facebook Profile ", profile)
     const profileObj = profile._json;
 
     let signupObj = {
@@ -46,6 +45,5 @@ module.exports  = new FacebookStrategy({
         console.log(error)
         return done(null, false, error);
       });
-    done(null, profile);
   }
 )

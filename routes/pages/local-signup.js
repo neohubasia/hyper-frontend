@@ -12,20 +12,24 @@ router.get(url.signup, function(req, res, next) {
 
 router.post(url.signup, function (req, res, next) {
     // Changed earlier get call with post
+    req.body.displayName = req.body.first_name;
+
     axiosHandler.module.post('/c_api/customer_signup', req.body)
         .then(response => {
-            console.log(response)
-            // res.redirect("/auth/login");
-            res.render('auth/login', {...conf.app, ...response.data });
+            if (response.data.status == "SUCCESS") {
+                req.session.success = 'Your account is created. Please log in!';
+                res.redirect('/auth/login');
+            }
+            else {
+                req.session.error = 'Could not create user. Please try again!';
+                res.redirect(url.signup)
+            } 
         })
         .catch(error => {
             console.log(error)
-            res.json({
-                status: "FAIL",
-                message: "Account Signup Error"
-            })
+            req.session.error = 'Could not create user. Please try again!';
+            res.redirect(url.signup)
         });
-
 });
 
 

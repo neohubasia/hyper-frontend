@@ -26,7 +26,12 @@ head
         .col-md-7
           .mb-4
             h3 Sign Up
-            p.mb-4 one done, it saves a lot of ___ in future
+            if error
+              p.text-danger.mb-3= error
+            if success
+              p.text-success.mb-3= success
+            if notice
+              p.text-info.mb-3= notice
           form.validatedForm(action='/auth/signup' method='post')
             .form-group.first
               label(for='first_name') First Name
