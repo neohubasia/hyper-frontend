@@ -13,6 +13,8 @@ router.get(url.signup, function(req, res, next) {
 router.post(url.signup, function (req, res, next) {
     // Changed earlier get call with post
     req.body.displayName = req.body.first_name;
+    req.body.customer_type = "normal";
+    req.body.account_type = "itemplate";
 
     axiosHandler.module.post('/c_api/customer_signup', req.body)
         .then(response => {
