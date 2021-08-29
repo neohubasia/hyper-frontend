@@ -19,7 +19,7 @@ module.exports = new GoogleStrategy({
       last_name: profileObj.family_name,
       displayName: profileObj.name,
       customer_type: "normal",
-      account_type: "google",
+      account_type: "gmail",
       oauth_profile:  {
         refId: profileObj.sub,
         email: profileObj.email,
