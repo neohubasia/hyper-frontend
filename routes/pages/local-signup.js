@@ -11,10 +11,6 @@ router.get(url.signup, function(req, res, next) {
 });
 
 router.post(url.signup, function (req, res, next) {
-    //   res.render('auth/signup', { title: 'Signup Page' });
-    console.log(req.body)
-    console.log(axiosHandler);
-
     // Changed earlier get call with post
     axiosHandler.module.post('/c_api/customer_signup', req.body)
         .then(response => {
@@ -31,13 +27,6 @@ router.post(url.signup, function (req, res, next) {
         });
 
 });
-// router.post(url.login,
-//   passport.authenticate('local', {
-//     successRedirect: '/',
-//     failureRedirect: url.login,
-//     failureMessage: true
-//   })
-// );
 
 
 module.exports = router;

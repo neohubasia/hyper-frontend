@@ -29,10 +29,6 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(cookieParser());
 app.use(expressSession);
-// app.use(cookieSession({
-//   name: 'google-auth-session',
-//   keys: ['key1', 'key2']
-// }));
 
 app.use(function(req, res, next) {
   var msgs = req.session.messages || [];

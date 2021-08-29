@@ -10,7 +10,7 @@ module.exports = new LocalStrategy({
     async function (req, username, password, done) {
         const bodyData = { email: username, password: password };
 
-        // way 1
+        // way 1 - Promise
         // axiosHandler.module.post('/c_api/customer_login', bodyData)
         // .then(response => {
         //     if (!response.data.auth) {
@@ -23,7 +23,7 @@ module.exports = new LocalStrategy({
         //    done(error);
         // });
 
-        // way 2
+        // way 2 - async/await
         const response = await axiosHandler.module.post('/c_api/customer_login', bodyData);
 
         if (!response.data.auth) {
