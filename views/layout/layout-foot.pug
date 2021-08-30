@@ -88,4 +88,22 @@ script.
       navbar.classList.remove("sticky");
     }
   }
+
+  const  authData = ('!{auth}') ? JSON.parse('!{auth}') : {}; // User Obj
+  const  baseUrl = '!{BASE}';                                 // Base Url
+
+  //- {
+  //-   _id: '612c5f4fc1be29abaf5b6504',
+  //-   last_name: 'phyo',
+  //-   first_name: 'wai',
+  //-   email: 'wy@gmail.com',
+  //-   displayName: 'wai',
+  //-   customer_type: 'normal',
+  //-   account_type: 'itemplate',
+  //-   updated_at: '2021-08-30T04:32:13.889Z',
+  //-   active: false,
+  //-   address: [],
+  //-   __v: 0,
+  //- }
+
 block scripts

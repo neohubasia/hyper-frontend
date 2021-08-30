@@ -35,10 +35,10 @@ marquee(bgcolor="gold")
           a(href='#') English
 
     .header__top__right__auth
-        if auth
+        if authUser
           a.ml-3(href='#')
             i.fa.fa-user
-            span= auth.displayName
+            span= authUser.displayName
         else 
           a.ml-3(href='./auth/login')
             i.fa.fa-sign-in
@@ -64,7 +64,7 @@ marquee(bgcolor="gold")
         a(href='./blog') Blog
       li
         a(href='./contact') Contact
-      if auth
+      if authUser
         li
           a(href='/auth/logout') Logout
   #mobile-menu-wrap
@@ -115,13 +115,13 @@ marquee(bgcolor="gold")
                 a(href='#') Spanis
               li
                 a(href='#') English
-          if auth
+          if authUser
             .header__top__right__auth.mr-3.isUser
               a(href='#')
                 i.fa.fa-user
-                span= auth.displayName
+                span= authUser.displayName
           .header__top__right__auth.isLogin
-            if auth
+            if authUser
               a(href='./auth/logout')
                 i.fa.fa-sign-out
                 span Logout

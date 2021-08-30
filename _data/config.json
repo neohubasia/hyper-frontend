@@ -1,6 +1,7 @@
 {
     "app": {
-        "TITLE": "itemplate | marketplace"
+        "TITLE": "itemplate | marketplace",
+        "BASE": "https://itemplate.herokuapp.com"
     },
     "jwt": {
         "TEXT": "9E0HU8L48",

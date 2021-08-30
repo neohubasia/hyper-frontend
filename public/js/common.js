@@ -9,6 +9,29 @@
 
 'use strict';
 
+$.fn.safeUrl = function(args){
+    var that = this;
+      
+    if($(that).attr('data-safeurl') && $(that).attr('data-safeurl') === 'found'){
+        return that;
+    }
+    else {
+        $.ajax({
+            url: args.changeUrl,
+            type: 'HEAD',
+            error: function() {
+                $(that).attr('setbg', args.originUrl)
+            },
+            success: function () {
+                $(that).css("background-image", "url(" + args.changeUrl + ")");
+                $(that).attr('data-safeurl', 'found');
+            }
+        });
+    }
+    return that;
+};
+
+
 (function ($) {
 
     /*------------------
