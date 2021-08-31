@@ -31,6 +31,83 @@ $.fn.safeUrl = function(args){
     return that;
 };
 
+/// Comman Ajax Request ///
+
+function commonProductCategory(slider = false) {
+    $.ajax({
+        url: "/api/getProductCategory",
+        type: "GET",
+        data: { status: true },
+        dataType: 'json',
+        success: async function (result) {
+            if (result.status == "SUCCESS" && result.data.length > 0) {
+                let catClone = $('#commonCategory').find('ul').clone();
+                let liHtml = "";
+
+                $.each(result.data, async function (Idx, obj) {
+                    catClone.find('a').attr('href', `/shop?category_id=${obj.id}`)
+                    catClone.find('a').text(obj.name)
+                    liHtml += catClone.html();
+                });
+
+                $('#commonCategory').find('ul').html(liHtml);
+
+                if (slider == true) {
+                    let catSliderClone = $('#commonCategorySlider').find('.owl-carousel').clone();
+                    let sliderHtml = "";
+
+                    $.each(result.data, async function (Idx, obj) {
+                        catSliderClone.find('.categories__item').attr('data-setbg', 'https://via.placeholder.com/270x270/555/555')
+                        catSliderClone.find('a').attr('href',  `/shop?category_id=${obj.id}`);
+                        catSliderClone.find('a').text(obj.name);
+
+                        sliderHtml += catSliderClone.html();
+                    })
+
+                    $('#commonCategorySlider').find('.owl-carousel').html(sliderHtml);
+
+                    /*-----------------------
+                        Categories Slider
+                    ------------------------*/
+                    $(".categories__slider").owlCarousel({
+                        loop: true,
+                        margin: 0,
+                        items: 4,
+                        nav: true,
+                        dots: false,
+                        navText: ["<span class='fa fa-angle-left'><span/>", "<span class='fa fa-angle-right'><span/>"],
+                        animateOut: 'fadeOut',
+                        animateIn: 'fadeIn',
+                        smartSpeed: 1200,
+                        autoHeight: false,
+                        autoplay: true,
+                        responsive: {
+                            0: {
+                                items: 1,
+                            },
+                        
+                            480: {
+                                items: 2,
+                            },
+                        
+                            768: {
+                                items: 3,
+                            },
+                        
+                            992: {
+                                items: 4,
+                            }
+                        }
+                    });
+                }
+            }
+        },
+        error: function (xhr) {
+           console.log("Product Category ", xhr)
+        }
+    });
+}
+
 
 (function ($) {
 
@@ -44,14 +121,14 @@ $.fn.safeUrl = function(args){
         /*------------------
             Gallery filter
         --------------------*/
-        $('.featured__controls li').on('click', function () {
-            $('.featured__controls li').removeClass('active');
-            $(this).addClass('active');
-        });
-        if ($('.featured__filter').length > 0) {
-            var containerEl = document.querySelector('.featured__filter');
-            var mixer = mixitup(containerEl);
-        }
+        // $('.featured__controls li').on('click', function () {
+        //     $('.featured__controls li').removeClass('active');
+        //     $(this).addClass('active');
+        // });
+        // if ($('.featured__filter').length > 0) {
+        //     var containerEl = document.querySelector('.featured__filter');
+        //     var mixer = mixitup(containerEl);
+        // }
     });
 
     /*------------------
@@ -83,40 +160,7 @@ $.fn.safeUrl = function(args){
         allowParentLinks: true
     });
 
-    /*-----------------------
-        Categories Slider
-    ------------------------*/
-    $(".categories__slider").owlCarousel({
-        loop: true,
-        margin: 0,
-        items: 4,
-        dots: false,
-        nav: true,
-        navText: ["<span class='fa fa-angle-left'><span/>", "<span class='fa fa-angle-right'><span/>"],
-        animateOut: 'fadeOut',
-        animateIn: 'fadeIn',
-        smartSpeed: 1200,
-        autoHeight: false,
-        autoplay: true,
-        responsive: {
 
-            0: {
-                items: 1,
-            },
-
-            480: {
-                items: 2,
-            },
-
-            768: {
-                items: 3,
-            },
-
-            992: {
-                items: 4,
-            }
-        }
-    });
 
 
     $('.hero__categories__all').on('click', function(){

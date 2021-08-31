@@ -4,8 +4,6 @@ const axios = require('axios');
 const conf = require('../_data/config.json');
 const API_URL = process.env.API_URL;
 
-console.log(API_URL)
-
 // Step-1: Create a new Axios instance with a custom config.
 // The timeout is set to 10s. If the request takes longer than
 // that then the request will be aborted.

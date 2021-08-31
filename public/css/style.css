@@ -792,11 +792,11 @@ ol {
 }
 
 .categories__item h5 a {
-	font-size: 18px;
-	color: #333;
-	font-weight: 700;
+	font-size: 14px;
+	color: #555;
+	font-weight: 555;
 	text-transform: uppercase;
-	letter-spacing: 2px;
+	letter-spacing: 0.5px;
 	padding: 12px 0 10px;
 	background: #fff;
 	display: block;
