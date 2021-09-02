@@ -164,51 +164,6 @@ function commonProductCategory(slider = false) {
         $('.hero__categories ul').slideToggle(400);
     });
 
-    // /*--------------------------
-    //     Latest Product Slider
-    // ----------------------------*/
-    // $(".latest-product__slider").owlCarousel({
-    //     loop: true,
-    //     margin: 0,
-    //     items: 1,
-    //     dots: false,
-    //     nav: true,
-    //     navText: ["<span class='fa fa-angle-left'><span/>", "<span class='fa fa-angle-right'><span/>"],
-    //     smartSpeed: 1200,
-    //     autoHeight: false,
-    //     autoplay: true
-    // });
-
-    /*-----------------------------
-        Product Discount Slider
-    -------------------------------*/
-    $(".product__discount__slider").owlCarousel({
-        loop: true,
-        margin: 0,
-        items: 3,
-        dots: true,
-        smartSpeed: 1200,
-        autoHeight: false,
-        autoplay: true,
-        responsive: {
-
-            320: {
-                items: 1,
-            },
-
-            480: {
-                items: 2,
-            },
-
-            768: {
-                items: 2,
-            },
-
-            992: {
-                items: 3,
-            }
-        }
-    });
 
     /*---------------------------------
         Product Details Pic Slider
