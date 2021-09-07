@@ -3,8 +3,56 @@ $(document).ready(function () {
     $(".header__menu").find("#shop__menu__link").addClass("active");
 
     commonProductCategory()
+    getFilterProduct({ status: true })
     getBannerOne({ no_of_image: 1 });
 });
+
+function getFilterProduct(data) {
+
+    $('#filterPagings').pagination({
+        dataSource: function (done) {
+            $.ajax({
+                url: "/api/getProduct",
+                type: "GET",
+                data: data,
+                dataType: 'json',
+                success: async function (result) {
+                    if (result.status == "SUCCESS" && result.data) {
+                        $('#countProduct').text(result.data.length);
+                        done(result.data);
+                    }
+                },
+                error: function (xhr) {
+                    console.log("Product Filter ", xhr)
+                }
+            })
+        },
+        locator: 'items',
+        pageSize: 3,
+        showPageNumbers: true,
+        showPrevious: true,
+        showNext: true,
+        showNavigator: true,
+        className: 'paginationjs-theme-blue paginationjs-big',
+        ajax: {
+            beforeSend: function () {
+                $('#filterProduct').html('Loading data from our source ...');
+            }
+        },
+        callback: function (response, pagination) {
+            window.console && console.log(22, response, pagination);
+            let filtProdClone = $('#preFilterProduct').clone(), filtProdHtml = "";
+
+            $.each(response, async function (Idx, Obj) {
+                filtProdClone.find('a:last').text(`${Obj.name}`)
+                filtProdClone.find('h5').text(`${Obj.price}MMK`)
+                filtProdHtml += filtProdClone.html();
+            });
+
+            $('#filterProduct').html(filtProdHtml);
+        }
+    })
+}
 
 function getBannerOne(data) {
     $.ajax({
@@ -23,7 +71,7 @@ function getBannerOne(data) {
             getDiscountProduct({ status: true })
         },
         error: function (xhr) {
-           console.log("Banner ", xhr)
+            console.log("Banner ", xhr)
         }
     });
 }
@@ -39,12 +87,12 @@ function getDiscountProduct(data) {
 
                 let discProddHtml = "",
                     discProdClone = $('#discountProduct').find('.product__discount__slider').clone()
-                
+
                 $.each(result.data, async function (Idx, Obj) {
                     discProdClone.find('a:last').text(`${Obj.name}`)
-                    discProdClone.find('span:first').text(`${Obj.category_id.name}`)
+                    // discProdClone.find('span:first').text(`${Obj.category_id.name}`)
                     discProdClone.find('.product__item__price').html(`${Obj.price}MMK <span>${Obj.price}MMK</span>`)
-  
+
                     discProddHtml += discProdClone.html();
                 });
 
@@ -62,19 +110,19 @@ function getDiscountProduct(data) {
                     autoHeight: false,
                     autoplay: true,
                     responsive: {
-                    
+
                         320: {
                             items: 1,
                         },
-                    
+
                         480: {
                             items: 2,
                         },
-                    
+
                         768: {
                             items: 2,
                         },
-                    
+
                         992: {
                             items: 3,
                         }
@@ -86,7 +134,7 @@ function getDiscountProduct(data) {
             getProductSliders({ status: true })
         },
         error: function (xhr) {
-           console.log("Product Slider ", xhr)
+            console.log("Product Slider ", xhr)
         }
     });
 }
@@ -103,8 +151,8 @@ function getProductSliders(data) {
                 let lttProdClone = $('#productSliders').find('.latest-product__slider:first').clone()
 
                 let lttProdSlideClone = lttProdClone.find('.latest-prdouct__slider__item').clone();
-                    lttProdSlideHtml = "", lttProdHtml = "";
-                
+                lttProdSlideHtml = "", lttProdHtml = "";
+
                 $.each(result.data, async function (Idx, Obj) {
                     lttProdSlideClone.find('h6').text(`${Obj.name}`)
                     lttProdSlideClone.find('span').text(`${Obj.price}MMK`)
@@ -113,7 +161,7 @@ function getProductSliders(data) {
                     if (((Idx + 1) % 3) == 0) {
                         lttProdSlideHtml += `<div class="latest-product__slider owl-carousel"><div class="latest-prdouct__slider__item">` + lttProdHtml + `</div></div>`;
                         lttProdHtml = "";
-                    } 
+                    }
                 });
 
                 $('#productSliders').find('.latest-product__slider:first').html(lttProdSlideHtml)
@@ -132,7 +180,7 @@ function getProductSliders(data) {
             }
         },
         error: function (xhr) {
-           console.log("Product Slider ", xhr)
+            console.log("Product Slider ", xhr)
         }
     });
 }
