@@ -1,0 +1,14 @@
+{
+    "choose_me": "English",
+    "menu__link": {
+        "home": "Home",
+        "shop": "Shop",
+        "pages": "Pages",
+        "blog": "Blog",
+        "contact": "Contact",
+        "checkout": "Check Out",
+        "shop-cart": "Shopping Cart",
+        "shop-details": "Shop Details",
+        "blog-details": "Bloh Details"
+    }
+}

@@ -79,10 +79,11 @@ script(src='js/pagination.min.js')
 script(src='js/mixitup.min.js')
 script(src='js/common.js')
 script.
-  window.onscroll = function () { myFunction() };
+  window.onscroll = function () { onScrollTrack() };
   var navbar = document.getElementById("navbar");
   var sticky = navbar.offsetTop || 47;
-  function myFunction() {
+
+  function onScrollTrack() {
     if (window.pageYOffset >= sticky) {
       navbar.classList.add("sticky")
     } else {
@@ -90,8 +91,35 @@ script.
     }
   }
 
+  function getLanguage() {
+    $.ajax({ 
+      url:  '/api/getLang/' +  localStorage.getItem('lang'), 
+      async: false,
+      dataType: 'json', 
+      success: function (lang) {
+          for (const [key, value] of Object.entries(lang.menu__link)) {
+            $(`.${key}__menu__link`).each(function() {
+              $(this).find('a').contents().filter(function() {
+                console.log(this)
+                return this.nodeType == 3 && this.textContent.trim();
+              })[0].textContent = `${value}`;
+            });
+          }
+
+          $('.header__top__right__language').find('#choose_me').text(lang.choose_me);
+        } 
+    });
+  }
+
+  function setLanguage(lang) {
+    localStorage.setItem('lang', lang);
+    getLanguage.call(this)
+  }
+
+  setLanguage.call(this,  localStorage.getItem('lang') ?  localStorage.getItem('lang') : 'en');
+
   const  authData = ('!{auth}') ? JSON.parse('!{auth}') : {}; // User Obj
-  const  baseUrl = '!{BASE}';                  // Base Url
+  const  baseUrl = '!{BASE}';                                 // Base Url
 
   //- {
   //-   _id: '612c5f4fc1be29abaf5b6504',

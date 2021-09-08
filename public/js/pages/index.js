@@ -22,10 +22,10 @@ function getBannerOne(data) {
                 });
                 getBannerTwo({ no_of_image: 2 });
             }
-    
+
         },
         error: function (xhr) {
-           console.log("Banner ", xhr)
+            console.log("Banner ", xhr)
         }
     });
 }
@@ -42,7 +42,7 @@ async function getBannerTwo(data) {
                 let bannerClone = $("#homeBanner-2").find(".holdBanner").clone();
 
                 $.each(result.data[0].images, async function (imgIdx, imgUrl) {
-                    bannerClone.find(".imgBanner").attr("src",  baseUrl + imgUrl);
+                    bannerClone.find(".imgBanner").attr("src", baseUrl + imgUrl);
                     bannerHtml += bannerClone.html();
                 });
 
@@ -52,7 +52,7 @@ async function getBannerTwo(data) {
             }
         },
         error: function (xhr) {
-           console.log("Banner ", xhr)
+            console.log("Banner ", xhr)
         }
     });
 }
@@ -70,7 +70,7 @@ async function getFeatureProduct(data) {
                 let liTitle = "", featProduct = "";
 
                 // let  test = ['vegetables', 'fresh-meat']
-                
+
                 $.each(result.data, async function (Idx, Obj) {
                     featTitleClone.find('li').attr('data-filter', `.cat-${Idx}`)
                     featTitleClone.find('li').removeAttr('class')
@@ -105,7 +105,7 @@ async function getFeatureProduct(data) {
             }
         },
         error: function (xhr) {
-           console.log("Feature Product ", xhr)
+            console.log("Feature Product ", xhr)
         }
     });
 }
@@ -124,14 +124,14 @@ function getProductSliders(data) {
                 let rvwProdClone = $('#productSliders').find('.latest-product__slider:last').clone()
 
                 let lttProdSlideClone = lttProdClone.find('.latest-prdouct__slider__item').clone();
-                    lttProdSlideHtml = "", lttProdHtml = "";
-                
+                lttProdSlideHtml = "", lttProdHtml = "";
+
                 let topProdSlideClone = topProdClone.find('.latest-prdouct__slider__item').clone();
-                    topProdSlideHtml = "", topProdHtml = "";
-                
+                topProdSlideHtml = "", topProdHtml = "";
+
                 let rvwProdSlideClone = rvwProdClone.find('.latest-prdouct__slider__item').clone();
-                    rvwProdSlideHtml = "", rvwProdHtml = "";
-                
+                rvwProdSlideHtml = "", rvwProdHtml = "";
+
                 $.each(result.data, async function (Idx, Obj) {
                     lttProdSlideClone.find('h6').text(`${Obj.name}`)
                     lttProdSlideClone.find('span').text(`${Obj.price}MMK`)
@@ -140,7 +140,7 @@ function getProductSliders(data) {
                     if (((Idx + 1) % 3) == 0) {
                         lttProdSlideHtml += `<div class="latest-product__slider owl-carousel"><div class="latest-prdouct__slider__item">` + lttProdHtml + `</div></div>`;
                         lttProdHtml = "";
-                    } 
+                    }
                 });
 
                 $.each(result.data, async function (Idx, Obj) {
@@ -151,7 +151,7 @@ function getProductSliders(data) {
                     if (((Idx + 1) % 3) == 0) {
                         topProdSlideHtml += `<div class="latest-product__slider owl-carousel"><div class="latest-prdouct__slider__item">` + topProdHtml + `</div></div>`;
                         topProdHtml = "";
-                    } 
+                    }
                 });
 
                 $.each(result.data, async function (Idx, Obj) {
@@ -162,7 +162,7 @@ function getProductSliders(data) {
                     if (((Idx + 1) % 3) == 0) {
                         rvwProdSlideHtml += `<div class="latest-product__slider owl-carousel"><div class="latest-prdouct__slider__item">` + rvwProdHtml + `</div></div>`;
                         rvwProdHtml = "";
-                    } 
+                    }
                 });
 
                 $('#productSliders').find('.latest-product__slider:first').html(lttProdSlideHtml)
@@ -184,7 +184,7 @@ function getProductSliders(data) {
             }
         },
         error: function (xhr) {
-           console.log("Product Slider ", xhr)
+            console.log("Product Slider ", xhr)
         }
     });
 }

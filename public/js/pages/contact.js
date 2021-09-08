@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $(".header__menu").find(".header__menu__link").removeClass("active");
-    $(".header__menu").find("#contact__menu__link").addClass("active");
+    $(".header__menu").find(".contact__menu__link").addClass("active");
 
     commonProductCategory()
     getBannerOne({ no_of_image: 1 });
@@ -21,7 +21,7 @@ function getBannerOne(data) {
             }
         },
         error: function (xhr) {
-           console.log("Banner ", xhr)
+            console.log("Banner ", xhr)
         }
     });
 }

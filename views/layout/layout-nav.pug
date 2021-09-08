@@ -25,14 +25,15 @@ marquee(bgcolor="gold")
       span $150.00
   .humberger__menu__widget
     .header__top__right__language
-      img(src='img/language/language.png' alt='')
-      div English
+      //- img(src='img/language/language.png' alt='')
+      span.fa.fa-language
+      span#choose_me English
       span.arrow_carrot-down
       ul
         li
-          a(href='#') Spanis
+          a(href='#' onclick="setLanguage('en')") English
         li
-          a(href='#') English
+          a(href='#' onclick="setLanguage('my')") Myanmar
 
     .header__top__right__auth
         if authUser
@@ -45,24 +46,24 @@ marquee(bgcolor="gold")
             span  Login
   nav.humberger__menu__nav.mobile-menu
     ul
-      li.active
+      li.home__menu__link.active
         a(href='./') Home
-      li
+      li.shop__menu__link
         a(href='./shop') Shop
-      li
+      li.pages__menu__link
         a(href='#') Pages
         ul.header__menu__dropdown
-          li
+          li.shop-details__menu__link
             a(href='./shop-details') Shop Details
-          li
+          li.shop-cart__menu__link
             a(href='./shop-cart') Shoping Cart
-          li
+          li.checkout__menu__link
             a(href='./checkout') Check Out
-          li
+          li.blog-details__menu__link
             a(href='./blog-details') Blog Details
-      li
+      li.blog__menu__link
         a(href='./blog') Blog
-      li
+      li.contact__menu__link
         a(href='./contact') Contact
       if authUser
         li
@@ -107,14 +108,15 @@ marquee(bgcolor="gold")
             a(href='#')
               i.fa.fa-pinterest-p
           .header__top__right__language
-            img(src='img/language/language.png' alt='')
-            div English
+            //- img(src='img/language/language.png' alt='')
+            span.fa.fa-language
+            span#choose_me English
             span.arrow_carrot-down
             ul
               li
-                a(href='#') Spanis
+                a(href='#' onclick="setLanguage('en')") English
               li
-                a(href='#') English
+                a(href='#' onclick="setLanguage('my')") Myanmar
           if authUser
             .header__top__right__auth.mr-3.isUser
               a(href='#')
@@ -141,24 +143,23 @@ header#navbar.header.bg-white.border-bottom
           ul
             li.header__menu__link.home__menu__link
               a(href='./') Home
-            li.header__menu__link#shop__menu__link
+            li.header__menu__link.shop__menu__link
               a(href='./shop') Shop
-            li.header__menu__link#pages__menu__link
-              a(href='#')
-                | Pages 
+            li.header__menu__link.pages__menu__link
+              a(href='#') Pages 
                 i.fa.fa-chevron-down
               ul.header__menu__dropdown
-                li.header__menu__link#shop-details__menu__link
+                li.header__menu__link.shop-details__menu__link
                   a(href='./shop-details') Shop Details
-                li.header__menu__link#shop-cart__menu__link
+                li.header__menu__link.shop-cart__menu__link
                   a(href='./shop-cart') Shoping Cart
-                li.header__menu__link#checkout__menu__link
+                li.header__menu__link.checkout__menu__link
                   a(href='./checkout') Check Out
-                li.header__menu__link#blog-details__menu__link
+                li.header__menu__link.blog-details__menu__link
                   a(href='./blog-details') Blog Details
-            li.header__menu__link#blog__menu__link
+            li.header__menu__link.blog__menu__link
               a(href='./blog') Blog
-            li.header__menu__link#contact__menu__link
+            li.header__menu__link.contact__menu__link
               a(href='./contact') Contact
       .col-lg-3
         .header__cart

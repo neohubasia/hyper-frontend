@@ -1,0 +1,14 @@
+{
+    "choose_me": "Myanmar",
+    "menu__link": {
+        "home": "ပင်မ",
+        "shop": "ပစ္စည်းများ",
+        "pages": "စာမျက်နှာများ",
+        "blog": "ဘလော့ဂ်",
+        "contact": "ဆက်သွယ်",
+        "checkout": "ငွေရှင်းခြင်း",
+        "shop-cart": "စျေးဝယ်ခြင်း",
+        "shop-details": "ပစ္စည်းအသေးစိတ်",
+        "blog-details": "ဘလေ့ာဂ်အသေးစိတ်"
+    }
+}
