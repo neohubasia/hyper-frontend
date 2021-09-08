@@ -1,6 +1,6 @@
 /******************************************************************
-  Template Name: Ogani
-  Description:  Ogani eCommerce  HTML Template
+  Template Name: itemplate
+  Description: itemplate eCommerce HTML Template
   Author: Colorlib
   Author URI: https://colorlib.com
   Version: 1.0
@@ -907,17 +907,17 @@ ol {
 	margin-right: 0;
 }
 
-.featured__item__pic__hover li:hover a {
+.featured__item__pic__hover li:hover button {
 	background: #15a5b5;
 	border-color: #15a5b5;
 }
 
-.featured__item__pic__hover li:hover a i {
+.featured__item__pic__hover li:hover button i {
 	color: #fff;
 	transform: rotate(360deg);
 }
 
-.featured__item__pic__hover li a {
+.featured__item__pic__hover li button {
 	font-size: 16px;
 	color: #333;
 	height: 40px;
@@ -935,7 +935,7 @@ ol {
 	transition: all, 0.5s;
 }
 
-.featured__item__pic__hover li a i {
+.featured__item__pic__hover li button i {
 	position: relative;
 	transform: rotate(0);
 	-webkit-transition: all, 0.3s;
@@ -3614,4 +3614,27 @@ ol {
 	.blog__details__hero__text h2 {
 		font-size: 24px;
 	}
+}
+
+/* Sweet alert 2 */
+
+.swal-style {
+	width: 450px !important;
+	font-size: 14px !important;
+	margin: 1.75em 0 0 0 !important;
+}
+
+.swal2-styled.swal2-confirm,
+.swal2-styled.swal2-cancel {
+	line-height: 0.88px;
+	width: auto;
+	height: 33px;
+}
+
+.swal2-styled.swal2-confirm {
+	background-color: #05548f !important;
+}
+
+.swal2-styled.swal2-cancel {
+	background-color: #757575 !important;
 }

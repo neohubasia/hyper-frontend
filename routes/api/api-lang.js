@@ -13,7 +13,7 @@ router.get('/api/getLang/:lang', function (req, res, next) {
             res.send(err)
         }
         else {
-            console.log("Success reading file: ", data.choose_me);
+            console.log("Success reading file: ", req.params.lang);
             res.send(data);
         }
     });

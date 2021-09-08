@@ -4,6 +4,13 @@ $(document).ready(function () {
     $(".header__menu").find(".header__menu__link").removeClass("active");
     $(".header__menu").find(".home__menu__link").addClass("active");
 
+    if (Object.keys(authData).length > 0) {
+        shopCartCount.call(this)
+    }
+    else {
+        sessionStorage.removeItem('cartList')
+    }
+
     commonProductCategory(true)
     getBannerOne({ no_of_image: 1 });
 });
@@ -65,11 +72,9 @@ async function getFeatureProduct(data) {
         dataType: 'json',
         success: async function (result) {
             if (result.status == "SUCCESS" && result.data) {
-                let featTitleClone = $('#featureProduct').find('ul:first').clone()
-                let featProductClone = $('#featureProduct').find('.featured__filter').clone()
+                let featTitleClone = $('#preFeatureProduct').find('ul:first').clone()
+                let featProductClone = $('#preFeatureProduct').find('.featured__filter').clone()
                 let liTitle = "", featProduct = "";
-
-                // let  test = ['vegetables', 'fresh-meat']
 
                 $.each(result.data, async function (Idx, Obj) {
                     featTitleClone.find('li').attr('data-filter', `.cat-${Idx}`)
@@ -79,6 +84,8 @@ async function getFeatureProduct(data) {
 
                     featProductClone.find('.mix').addClass(`cat-${Idx}`);
                     featProductClone.find('.mix').removeClass(`cat-${--Idx}`);
+
+                    featProductClone.find('button:eq(1)').attr('onclick', `addToCart('${Obj.id}', 1, this);`);
                     featProductClone.find('a:last').attr('href', `/shop-details?product_id=${Obj.id}`);
                     featProductClone.find('a:last').text(`${Obj.name}`);
                     featProductClone.find('h5').text(`${Obj.price}MMK`);

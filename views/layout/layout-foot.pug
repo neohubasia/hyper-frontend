@@ -75,6 +75,7 @@ script(src='js/jquery-ui.min.js')
 script(src='js/jquery.slicknav.js')
 script(src='js/jquery.nice-select.min.js')
 script(src='js/owl.carousel.min.js')
+script(src='js/sweetalert2.min.js')
 script(src='js/pagination.min.js')
 script(src='js/mixitup.min.js')
 script(src='js/common.js')
@@ -82,6 +83,10 @@ script.
   window.onscroll = function () { onScrollTrack() };
   var navbar = document.getElementById("navbar");
   var sticky = navbar.offsetTop || 47;
+  var isNew = true;
+
+  const  authData = ('!{auth}') ? JSON.parse('!{auth}') : {}; // User Obj
+  const  baseUrl = '!{BASE}';                                 // Base Url
 
   function onScrollTrack() {
     if (window.pageYOffset >= sticky) {
@@ -92,23 +97,24 @@ script.
   }
 
   function getLanguage() {
-    $.ajax({ 
-      url:  '/api/getLang/' +  localStorage.getItem('lang'), 
-      async: false,
-      dataType: 'json', 
-      success: function (lang) {
-          for (const [key, value] of Object.entries(lang.menu__link)) {
-            $(`.${key}__menu__link`).each(function() {
-              $(this).find('a').contents().filter(function() {
-                console.log(this)
-                return this.nodeType == 3 && this.textContent.trim();
-              })[0].textContent = `${value}`;
-            });
-          }
+    var langObj = JSON.parse(localStorage.getItem('langObj'));
+    var lang = localStorage.getItem('lang');
 
-          $('.header__top__right__language').find('#choose_me').text(lang.choose_me);
+    if (langObj && langObj.choose_me.toLowerCase() == lang) {
+      // work with local Lang
+      changeMenu.call(this, langObj)
+    }
+    else {
+      $.ajax({ 
+        url:  '/api/getLang/' +  localStorage.getItem('lang'), 
+        async: false,
+        dataType: 'json', 
+        success: function (response) {
+          changeMenu.call(this, response)
+          langObj = localStorage.setItem('langObj', JSON.stringify(response));
         } 
-    });
+      });
+    }
   }
 
   function setLanguage(lang) {
@@ -116,10 +122,18 @@ script.
     getLanguage.call(this)
   }
 
-  setLanguage.call(this,  localStorage.getItem('lang') ?  localStorage.getItem('lang') : 'en');
+  function changeMenu(langObj) {
+    for (const [key, value] of Object.entries(langObj.menu__link)) {
+      $(`.${key}__menu__link`).each(function() {
+        $(this).find('a').contents().filter(function() {
+          return this.nodeType == 3 && this.textContent.trim();
+        })[0].textContent = `${value}`;
+      });
+    }
+    $('.header__top__right__language').find('#choose_me').text(langObj.choose_me);
+  }
 
-  const  authData = ('!{auth}') ? JSON.parse('!{auth}') : {}; // User Obj
-  const  baseUrl = '!{BASE}';                                 // Base Url
+  setLanguage.call(this,  localStorage.getItem('lang') ?  localStorage.getItem('lang') : 'en');
 
   //- {
   //-   _id: '612c5f4fc1be29abaf5b6504',

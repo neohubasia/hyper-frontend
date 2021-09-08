@@ -2,13 +2,23 @@ $(document).ready(function () {
     $(".header__menu").find(".header__menu__link").removeClass("active");
     $(".header__menu").find(".shop__menu__link").addClass("active");
 
+    var cartList = sessionStorage.getItem('cartList');
+    cartList = (cartList != null) ? JSON.parse(cartList) : {};
+
+    if (cartList && cartList.length > 0) {
+        alert(cartList.length)
+        $('.shopCartCount').each(function () {
+            // console.log("Local Storage ", cartList)
+            $(this).find('span').text(cartList.length)
+        })
+    }
+
     commonProductCategory()
     getFilterProduct({ status: true })
     getBannerOne({ no_of_image: 1 });
 });
 
 function getFilterProduct(data) {
-
     $('#filterPagings').pagination({
         dataSource: function (done) {
             $.ajax({

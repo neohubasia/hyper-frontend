@@ -1,6 +1,6 @@
 /*  ---------------------------------------------------
-    Template Name: Ogani
-    Description:  Ogani eCommerce  HTML Template
+    Template Name: itemplate
+    Description:  itemplate eCommerce  HTML Template
     Author: Colorlib
     Author URI: https://colorlib.com
     Version: 1.0
@@ -9,17 +9,19 @@
 
 'use strict';
 
-$.fn.safeUrl = function(args){
+/// Checking Something Functoin ///
+
+$.fn.safeUrl = function (args) {
     var that = this;
-      
-    if($(that).attr('data-safeurl') && $(that).attr('data-safeurl') === 'found'){
+
+    if ($(that).attr('data-safeurl') && $(that).attr('data-safeurl') === 'found') {
         return that;
     }
     else {
         $.ajax({
             url: args.changeUrl,
             type: 'HEAD',
-            error: function() {
+            error: function () {
                 $(that).attr('setbg', args.originUrl)
             },
             success: function () {
@@ -30,6 +32,55 @@ $.fn.safeUrl = function(args){
     }
     return that;
 };
+
+function swalWarning(args, icon = "warning") {
+    Swal.fire({
+        icon: icon,
+        text: args.text,
+        title: args.title,
+        buttonsStyling: true,
+        showConfirmButton: true,
+        confirmButtonText: "CLOSE",
+        customClass: 'swal-style',
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+        }
+    });
+}
+
+function checkAuthEnsure() {
+    if (Object.keys(authData).length <= 0) {
+        // swalWarning({
+        //     icon: "warning",
+        //     title: "Warning Message",
+        //     text: "The specified number of images has been reached",
+        // }); that is general calling
+
+        Swal.fire({
+            icon: "warning",
+            title: "Warning Message",
+            text: "You need to login first to continue",
+            showCancelButton: true,
+            confirmButtonText: 'Login',
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            }
+        }).then((result) => {
+            /* Read more about isConfirmed */
+            if (result.isConfirmed) {
+                window.location = '/auth/login'
+            }
+        })
+        return false;
+    }
+    else return true;
+}
 
 /// Comman Ajax Request ///
 
@@ -58,7 +109,7 @@ function commonProductCategory(slider = false) {
 
                     $.each(result.data, async function (Idx, obj) {
                         catSliderClone.find('.categories__item').attr('data-setbg', 'https://via.placeholder.com/270x270/555/555')
-                        catSliderClone.find('a').attr('href',  `/shop?category_id=${obj.id}`);
+                        catSliderClone.find('a').attr('href', `/shop?category_id=${obj.id}`);
                         catSliderClone.find('a').text(obj.name);
 
                         sliderHtml += catSliderClone.html();
@@ -85,15 +136,15 @@ function commonProductCategory(slider = false) {
                             0: {
                                 items: 1,
                             },
-                        
+
                             480: {
                                 items: 2,
                             },
-                        
+
                             768: {
                                 items: 3,
                             },
-                        
+
                             992: {
                                 items: 4,
                             }
@@ -103,7 +154,44 @@ function commonProductCategory(slider = false) {
             }
         },
         error: function (xhr) {
-           console.log("Product Category ", xhr)
+            console.log("Product Category ", xhr)
+        }
+    });
+}
+
+function shopCartCount() {
+    $.ajax({
+        url: '/api/getCartList',
+        data: {
+            customerId: authData._id
+        },
+        dataType: 'json',
+        success: function (response) {
+            $('.shopCartCount').each(function () {
+                $(this).find('span').text(response.data.length)
+                sessionStorage.setItem('cartList', JSON.stringify(response.data))
+            })
+        }
+    });
+}
+
+function addToCart(productId, quantity) {
+    if (!checkAuthEnsure()) {
+        return false;
+    }
+
+    $.ajax({
+        url: '/api/addToCart',
+        data: {
+            customerId: authData._id,
+            productId: productId,
+            quantity: quantity
+        },
+        type: "post",
+        dataType: 'json',
+        success: function (response) {
+            console.log("ADD TO CART ", response)
+            alert("Process to Add to cart  update")
         }
     });
 }
@@ -153,14 +241,14 @@ function commonProductCategory(slider = false) {
     });
 
     /*------------------
-		Navigation
-	--------------------*/
+        Navigation
+    --------------------*/
     $(".mobile-menu").slicknav({
         prependTo: '#mobile-menu-wrap',
         allowParentLinks: true
     });
 
-    $('.hero__categories__all').on('click', function(){
+    $('.hero__categories__all').on('click', function () {
         $('.hero__categories ul').slideToggle(400);
     });
 
@@ -179,8 +267,8 @@ function commonProductCategory(slider = false) {
     });
 
     /*-----------------------
-		Price Range Slider
-	------------------------ */
+        Price Range Slider
+    ------------------------ */
     var rangeSlider = $(".price-range"),
         minamount = $("#minamount"),
         maxamount = $("#maxamount"),
@@ -205,8 +293,8 @@ function commonProductCategory(slider = false) {
     $("select").niceSelect();
 
     /*------------------
-		Single Product
-	--------------------*/
+        Single Product
+    --------------------*/
     $('.product__details__pic__slider img').on('click', function () {
 
         var imgurl = $(this).data('imgbigurl');
@@ -219,8 +307,8 @@ function commonProductCategory(slider = false) {
     });
 
     /*-------------------
-		Quantity change
-	--------------------- */
+        Quantity change
+    --------------------- */
     var proQty = $('.pro-qty');
     proQty.prepend('<span class="dec qtybtn">-</span>');
     proQty.append('<span class="inc qtybtn">+</span>');
