@@ -6,7 +6,6 @@ $(document).ready(function () {
     cartList = (cartList != null) ? JSON.parse(cartList) : {};
 
     if (cartList && cartList.length > 0) {
-        alert(cartList.length)
         $('.shopCartCount').each(function () {
             // console.log("Local Storage ", cartList)
             $(this).find('span').text(cartList.length)

@@ -85,7 +85,8 @@ async function getFeatureProduct(data) {
                     featProductClone.find('.mix').addClass(`cat-${Idx}`);
                     featProductClone.find('.mix').removeClass(`cat-${--Idx}`);
 
-                    featProductClone.find('button:eq(1)').attr('onclick', `addToCart('${Obj.id}', 1, this);`);
+                    featProductClone.find('button:first').attr('onclick', `location.href='./shop-details/${Obj.id}'`);
+                    featProductClone.find('button:last').attr('onclick', `addToCart('${Obj.id}', 1, this);`);
                     featProductClone.find('a:last').attr('href', `/shop-details?product_id=${Obj.id}`);
                     featProductClone.find('a:last').text(`${Obj.name}`);
                     featProductClone.find('h5').text(`${Obj.price}MMK`);

@@ -21,24 +21,6 @@ block block-content
         .col-lg-3.col-md-5
           .sidebar
             .sidebar__item
-              h4 Official Stores
-              ul
-                li
-                  a(href='#') Apple
-                li
-                  a(href='#') Toyota
-                li
-                  a(href='#') Tesla Industry
-                li
-                  a(href='#') Pussy Bakery
-                li
-                  a(href='#') Zwe Htet
-                li
-                  a(href='#') Shwe Hinthar
-                li
-                  a(href='#') Myint Myint Khin
-
-            .sidebar__item
               h4 Price
               .price-range-wrap
                 .price-range.ui-slider.ui-corner-all.ui-slider-horizontal.ui-widget.ui-widget-content(data-min='10' data-max='100000')
@@ -49,6 +31,13 @@ block block-content
                   .price-input
                     input#minamount(type='text')
                     input#maxamount(type='text')
+            .sidebar__item#officialStore
+              h4 Official Stores
+              ul.officialStoreList.d-none
+                li
+                  a(href='#') Store Name
+              ul.officialStoreList
+
             //- .sidebar__item.sidebar__item__color--option
             //-   h4 Colors
             //-   .sidebar__item__color.sidebar__item__color--white
@@ -118,6 +107,9 @@ block block-content
                       ul.product__item__pic__hover
                         li
                           a(href='#')
+                            i.fa.fa-cube
+                        li
+                          a(href='#')
                             i.fa.fa-heart
                         li
                           a(href='#')
@@ -153,6 +145,9 @@ block block-content
               .product__item
                 .product__item__pic.set-bg(data-setbg='https://via.placeholder.com/270x270/f5f5f5/555')
                   ul.product__item__pic__hover
+                    li
+                      a(href='#')
+                        i.fa.fa-cube
                     li
                       a(href='#')
                         i.fa.fa-heart

@@ -3,12 +3,11 @@
     "menu__link": {
         "home": "Home",
         "shop": "Shop",
-        "pages": "Pages",
-        "blog": "Blog",
-        "contact": "Contact",
-        "checkout": "Check Out",
-        "shop-cart": "Shopping Cart",
-        "shop-details": "Shop Details",
-        "blog-details": "Bloh Details"
+        "store": "Officail Store",
+        "pages": "Today's Pages",
+        "popular_item": "Popular Item",
+        "discount_item": "Discount Item",
+        "latest_item": "Latest Item",
+        "contact": "Contact"
     }
 }

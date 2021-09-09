@@ -6,7 +6,6 @@ $(document).ready(function () {
     cartList = (cartList != null) ? JSON.parse(cartList) : {};
 
     if (cartList && cartList.length > 0) {
-        alert(cartList.length)
         $('.shopCartCount').each(function () {
             // console.log("Local Storage ", cartList)
             $(this).find('span').text(cartList.length)
@@ -78,12 +77,39 @@ function getBannerOne(data) {
                 });
             }
 
-            getDiscountProduct({ status: true })
+            getOfficailStore({ status: true })
         },
         error: function (xhr) {
             console.log("Banner ", xhr)
         }
     });
+}
+
+function getOfficailStore(data) {
+    $.ajax({
+        url: "/api/getOfficialStore",
+        type: "GET",
+        data: data,
+        dataType: 'json',
+        success: async function (result) {
+            if (result.status == "SUCCESS" && result.data) {
+
+                let offStoreHtml = "",
+                    offStoreClone = $('#officialStore').find('.officialStoreList:first').clone()
+
+                $.each(result.data, async function (Idx, Obj) {
+                    offStoreClone.find('a').text(`${Obj.company_name}`);
+                    offStoreClone.find('a').attr('href', `./officail-store/${Obj.id}`);
+
+                    offStoreHtml += offStoreClone.html();
+                })
+
+                $('#officialStore').find('.officialStoreList:last').html(offStoreHtml);
+            }
+
+            getDiscountProduct({ status: true })
+        }
+    })
 }
 
 function getDiscountProduct(data) {
@@ -95,7 +121,7 @@ function getDiscountProduct(data) {
         success: async function (result) {
             if (result.status == "SUCCESS" && result.data) {
 
-                let discProddHtml = "",
+                let discProdHtml = "",
                     discProdClone = $('#discountProduct').find('.product__discount__slider').clone()
 
                 $.each(result.data, async function (Idx, Obj) {
@@ -103,10 +129,10 @@ function getDiscountProduct(data) {
                     // discProdClone.find('span:first').text(`${Obj.category_id.name}`)
                     discProdClone.find('.product__item__price').html(`${Obj.price}MMK <span>${Obj.price}MMK</span>`)
 
-                    discProddHtml += discProdClone.html();
+                    discProdHtml += discProdClone.html();
                 });
 
-                $('#discountProduct').find('.product__discount__slider').html(discProddHtml)
+                $('#discountProduct').find('.product__discount__slider').html(discProdHtml)
 
                 /*-----------------------------
                     Product Discount Slider

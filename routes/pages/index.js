@@ -20,12 +20,12 @@ router.get('/shop', function (req, res, next) {
   res.render('pages/shop', { ...conf.app, auth: req.user });
 });
 
-router.get('/shop-details', function (req, res, next) {
+router.get('/shop-details/:product_id', function (req, res, next) {
   if (req.user) {
     res.locals.authUser = req.user;
     req.user = JSON.stringify(req.user);
   }
-  res.render('pages/shop-details', {...conf.app, auth: req.user });
+  res.render('pages/shop-details', { ...conf.app, auth: req.user });
 });
 
 router.get('/shop-cart', function (req, res, next) {
@@ -33,7 +33,7 @@ router.get('/shop-cart', function (req, res, next) {
     res.locals.authUser = req.user;
     req.user = JSON.stringify(req.user);
   }
-  res.render('pages/shop-cart', {...conf.app, auth: req.user });
+  res.render('pages/shop-cart', { ...conf.app, auth: req.user });
 });
 
 router.get('/checkout', isLogin('/auth/login'), function (req, res, next) { // ensure auth
@@ -41,7 +41,7 @@ router.get('/checkout', isLogin('/auth/login'), function (req, res, next) { // e
     res.locals.authUser = req.user;
     req.user = JSON.stringify(req.user);
   }
-  res.render('pages/checkout', {...conf.app, auth: req.user });
+  res.render('pages/checkout', { ...conf.app, auth: req.user });
 });
 
 router.get('/blog', function (req, res, next) {
@@ -49,7 +49,7 @@ router.get('/blog', function (req, res, next) {
     res.locals.authUser = req.user;
     req.user = JSON.stringify(req.user);
   }
-  res.render('pages/blog', {...conf.app, auth: req.user });
+  res.render('pages/blog', { ...conf.app, auth: req.user });
 });
 
 router.get('/blog-details', function (req, res, next) {
@@ -57,7 +57,7 @@ router.get('/blog-details', function (req, res, next) {
     res.locals.authUser = req.user;
     req.user = JSON.stringify(req.user);
   }
-  res.render('pages/blog-details', {...conf.app, auth: req.user });
+  res.render('pages/blog-details', { ...conf.app, auth: req.user });
 });
 
 router.get('/contact', function (req, res, next) {
@@ -65,7 +65,7 @@ router.get('/contact', function (req, res, next) {
     res.locals.authUser = req.user;
     req.user = JSON.stringify(req.user);
   }
-  res.render('pages/contact', {...conf.app, auth: req.user });
+  res.render('pages/contact', { ...conf.app, auth: req.user });
 });
 
 module.exports = router;
