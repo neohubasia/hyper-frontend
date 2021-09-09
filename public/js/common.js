@@ -96,7 +96,7 @@ function commonProductCategory(slider = false) {
                 let liHtml = "";
 
                 $.each(result.data, async function (Idx, obj) {
-                    catClone.find('a').attr('href', `/shop?category_id=${obj.id}`)
+                    catClone.find('a').attr('href', `/shop-items?category_id=${obj.id}`)
                     catClone.find('a').text(obj.name)
                     liHtml += catClone.html();
                 });
@@ -109,7 +109,7 @@ function commonProductCategory(slider = false) {
 
                     $.each(result.data, async function (Idx, obj) {
                         catSliderClone.find('.categories__item').attr('data-setbg', 'https://via.placeholder.com/270x270/555/555')
-                        catSliderClone.find('a').attr('href', `/shop?category_id=${obj.id}`);
+                        catSliderClone.find('a').attr('href', `/shop-items?category_id=${obj.id}`);
                         catSliderClone.find('a').text(obj.name);
 
                         sliderHtml += catSliderClone.html();
@@ -274,18 +274,19 @@ function addToCart(productId, quantity) {
         maxamount = $("#maxamount"),
         minPrice = rangeSlider.data('min'),
         maxPrice = rangeSlider.data('max');
+
     rangeSlider.slider({
         range: true,
         min: minPrice,
         max: maxPrice,
         values: [minPrice, maxPrice],
         slide: function (event, ui) {
-            minamount.val('$' + ui.values[0]);
-            maxamount.val('$' + ui.values[1]);
+            minamount.val(ui.values[0]);
+            maxamount.val(ui.values[1]);
         }
     });
-    minamount.val('$' + rangeSlider.slider("values", 0));
-    maxamount.val('$' + rangeSlider.slider("values", 1));
+    minamount.val(rangeSlider.slider("values", 0));
+    maxamount.val(rangeSlider.slider("values", 1));
 
     /*--------------------------
         Select

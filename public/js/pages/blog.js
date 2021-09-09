@@ -12,7 +12,6 @@ $(document).ready(function () {
         })
     }
 
-    commonProductCategory()
     getBannerOne({ no_of_image: 1 });
 });
 

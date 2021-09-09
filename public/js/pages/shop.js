@@ -12,7 +12,6 @@ $(document).ready(function () {
         })
     }
 
-    commonProductCategory()
     getFilterProduct({ status: true })
     getBannerOne({ no_of_image: 1 });
 });
@@ -37,7 +36,7 @@ function getFilterProduct(data) {
             })
         },
         locator: 'items',
-        pageSize: 3,
+        pageSize: 6,
         showPageNumbers: true,
         showPrevious: true,
         showNext: true,
@@ -99,7 +98,7 @@ function getOfficailStore(data) {
 
                 $.each(result.data, async function (Idx, Obj) {
                     offStoreClone.find('a').text(`${Obj.company_name}`);
-                    offStoreClone.find('a').attr('href', `./officail-store/${Obj.id}`);
+                    offStoreClone.find('a').attr('href', `/shop-items?supplier_id=${Obj.id}`);
 
                     offStoreHtml += offStoreClone.html();
                 })
@@ -167,7 +166,7 @@ function getDiscountProduct(data) {
 
             }
 
-            getProductSliders({ status: true })
+            getPopProductSliders({ status: true })
         },
         error: function (xhr) {
             console.log("Product Slider ", xhr)
@@ -175,7 +174,7 @@ function getDiscountProduct(data) {
     });
 }
 
-function getProductSliders(data) {
+function getPopProductSliders(data) {
     $.ajax({
         url: "/api/getProduct",
         type: "GET",
@@ -184,7 +183,7 @@ function getProductSliders(data) {
         success: async function (result) {
             if (result.status == "SUCCESS" && result.data) {
 
-                let lttProdClone = $('#productSliders').find('.latest-product__slider:first').clone()
+                let lttProdClone = $('#popProductSliders').find('.latest-product__slider:first').clone()
 
                 let lttProdSlideClone = lttProdClone.find('.latest-prdouct__slider__item').clone();
                 lttProdSlideHtml = "", lttProdHtml = "";
@@ -200,9 +199,56 @@ function getProductSliders(data) {
                     }
                 });
 
-                $('#productSliders').find('.latest-product__slider:first').html(lttProdSlideHtml)
+                $('#popProductSliders').find('.latest-product__slider:first').html(lttProdSlideHtml)
 
-                $(".latest-product__slider").owlCarousel({
+                $('#popProductSliders').find(".latest-product__slider").owlCarousel({
+                    loop: true,
+                    margin: 0,
+                    items: 1,
+                    dots: false,
+                    nav: true,
+                    navText: ["<span class='fa fa-angle-left'><span/>", "<span class='fa fa-angle-right'><span/>"],
+                    smartSpeed: 1200,
+                    autoHeight: false,
+                    autoplay: true
+                });
+            }
+            getlttProductSliders({ status: true })
+        },
+        error: function (xhr) {
+            console.log("Product Slider ", xhr)
+        }
+    });
+}
+
+function getlttProductSliders(data) {
+    $.ajax({
+        url: "/api/getProduct",
+        type: "GET",
+        data: data,
+        dataType: 'json',
+        success: async function (result) {
+            if (result.status == "SUCCESS" && result.data) {
+
+                let lttProdClone = $('#lttProductSliders').find('.latest-product__slider:first').clone()
+
+                let lttProdSlideClone = lttProdClone.find('.latest-prdouct__slider__item').clone();
+                lttProdSlideHtml = "", lttProdHtml = "";
+
+                $.each(result.data, async function (Idx, Obj) {
+                    lttProdSlideClone.find('h6').text(`${Obj.name}`)
+                    lttProdSlideClone.find('span').text(`${Obj.price}MMK`)
+                    lttProdHtml += lttProdSlideClone.html();
+
+                    if (((Idx + 1) % 3) == 0) {
+                        lttProdSlideHtml += `<div class="latest-product__slider owl-carousel"><div class="latest-prdouct__slider__item">` + lttProdHtml + `</div></div>`;
+                        lttProdHtml = "";
+                    }
+                });
+
+                $('#lttProductSliders').find('.latest-product__slider:first').html(lttProdSlideHtml)
+
+                $('#lttProductSliders').find(".latest-product__slider").owlCarousel({
                     loop: true,
                     margin: 0,
                     items: 1,

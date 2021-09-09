@@ -1,14 +1,26 @@
 .container
     .row
       .col-lg-3
-        .hero__categories#commonCategory
-          .hero__categories__all
-            i.fa.fa-bars
-            span All Categories
-          ul
-            li
-              a(href='#')
-           
+        //- .hero__categories#commonCategory
+        //-   .hero__categories__all
+        //-     i.fa.fa-bars
+        //-     span All Categories
+        //-   ul
+        //-     li
+        //-       a(href='#')
+
+        .sidebar__item
+          .price-range-wrap.mt-1
+            .price-range.ui-slider.ui-corner-all.ui-slider-horizontal.ui-widget.ui-widget-content(data-min='199' data-max='999999')
+              .ui-slider-range.ui-corner-all.ui-widget-header
+              span.ui-slider-handle.ui-corner-all.ui-state-default(tabindex='0')
+              span.ui-slider-handle.ui-corner-all.ui-state-default(tabindex='0')
+            .range-slider
+              .price-input.mt-n1
+                span Range (MMK): &nbsp;
+                input#minamount(type="text" onkeyup="if(parseInt(this.value)<199 || parseInt(this.value)>999999){ this.value =199; return false; }" oninput="this.value=this.value.replace(/[^0-9]/g,'');")
+                input#maxamount(type="text" onkeyup="if(parseInt(this.value)<199 || parseInt(this.value)>999999){ this.value =999999; return false; }" oninput="this.value=this.value.replace(/[^0-9]/g,'');" )
+
       .col-lg-9
         .hero__search
           .hero__search__form

@@ -41,28 +41,28 @@ marquee(bgcolor="gold")
             i.fa.fa-user
             span= authUser.displayName
         else 
-          a.ml-3(href='./auth/login')
+          a.ml-3(href='/auth/login')
             i.fa.fa-sign-in
             span  Login
   nav.humberger__menu__nav.mobile-menu
     ul
       li.home__menu__link.active
-        a(href='./') Home
+        a(href='/') Home
       li.shop__menu__link
-        a(href='./shop') Shop
+        a(href='/shop') Shop
       li.store__menu__link
-        a(href='./official_store') Official Store
+        a(href='/official_store') Official Store
       li.pages__menu__link
         a(href='#') Today's Pages
         ul.header__menu__dropdown
           li.popular_item__menu__link
-            a(href='./popular-item') Popular Item
+            a(href='/popular-item') Popular Item
           li.discount_item__menu__link
-            a(href='./discount-item') Discount Item
+            a(href='/discount-item') Discount Item
           li.latest_item__menu__link
-            a(href='./latest-item') Latest Item
+            a(href='/latest-item') Latest Item
       li.contact__menu__link
-        a(href='./contact') Contact
+        a(href='/contact') Contact
       if authUser
         li
           a(href='/auth/logout') Logout
@@ -122,11 +122,11 @@ marquee(bgcolor="gold")
                 span= authUser.displayName
           .header__top__right__auth.isLogin
             if authUser
-              a(href='./auth/logout')
+              a(href='/auth/logout')
                 i.fa.fa-sign-out
                 span Logout
             else 
-              a(href='./auth/login')
+              a(href='/auth/login')
                 i.fa.fa-sign-in
                 span  Login
 header#navbar.header.bg-white.border-bottom
@@ -140,23 +140,23 @@ header#navbar.header.bg-white.border-bottom
         nav.header__menu
           ul
             li.header__menu__link.home__menu__link
-              a(href='./') Home
+              a(href='/') Home
             li.header__menu__link.shop__menu__link
-              a(href='./shop') Marketplace
+              a(href='/shop') Marketplace
             li.header__menu__link.store__menu__link
-              a(href='./official-store') Official Store
+              a(href='/official-store') Official Store
             li.header__menu__link.pages__menu__link
               a(href='#') Today's Pages 
                 i.fa.fa-chevron-down
               ul.header__menu__dropdown
                 li.header__menu__link.popular_item__menu__link
-                  a(href='./popular-item') Popular Item
+                  a(href='/popular-item') Popular Item
                 li.header__menu__link.discount_item__menu__link
-                  a(href='./distount-item') Discount Item
+                  a(href='/distount-item') Discount Item
                 li.header__menu__link.latest_item__menu__link
-                  a(href='./latest-item') Latest Item
+                  a(href='/latest-item') Latest Item
             li.header__menu__link.contact__menu__link
-              a(href='./contact') Contact
+              a(href='/contact') Contact
       .col-lg-3
         .header__cart
           ul

@@ -1146,20 +1146,20 @@ ol {
 
 .price-range-wrap .range-slider .price-input:after {
 	position: absolute;
-	left: 38px;
-	top: 13px;
-	height: 1px;
-	width: 5px;
-	background: #15a5b5;
-	content: "";
+	left: 160px;
+	/* top: 13px;
+	height: 1.8px;
+	width: 5px; */
+	/* background: #15a5b5; */
+	content: "to";
 }
 
 .price-range-wrap .range-slider .price-input input {
+	border: none;
 	font-size: 16px;
 	color: #15a5b5;
 	font-weight: 700;
-	max-width: 20%;
-	border: none;
+	max-width: 75px;
 	display: inline-block;
 }
 
