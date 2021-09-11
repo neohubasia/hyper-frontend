@@ -89,6 +89,8 @@ script.
   const  authData = ('!{auth}') ? JSON.parse('!{auth}') : {}; // User Obj
   const  baseUrl = '!{BASE}';                                 // Base Url
 
+  console.log("Auth Data ", authData)
+
   function onScrollTrack() {
     if (window.pageYOffset >= sticky) {
       navbar.classList.add("sticky")

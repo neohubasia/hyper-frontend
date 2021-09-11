@@ -5,11 +5,12 @@ var isLogin = require('connect-ensure-login').ensureLoggedIn;
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  console.log("Uer Data", req.user)
+  console.log("Uer Data 1", req.user)
   if (req.user) {
     res.locals.authUser = req.user;
     req.user = JSON.stringify(req.user);
   }
+  console.log("Uer Data 2", req.user)
   res.render('pages/index', { ...conf.app, auth: req.user });
 });
 
