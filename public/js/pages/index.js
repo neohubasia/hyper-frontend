@@ -114,7 +114,18 @@ async function getFeatureStore(data) {
                     var mixer = mixitup(containerEl);
                 }
 
-                getProductSliders({ status: true })
+                getProductSliders({
+                    'page': {
+                        'limit': 6,
+                        'skip': 0
+                    },
+                    'filter': {
+                        'status': true
+                    },
+                    'sort': {
+                        'updated_at': 1
+                    }
+                })
             }
         },
         error: function (xhr) {
@@ -128,6 +139,7 @@ function getProductSliders(data) {
         url: "/api/getProduct",
         type: "GET",
         data: data,
+
         dataType: 'json',
         success: async function (result) {
             if (result.status == "SUCCESS" && result.data) {
@@ -148,7 +160,7 @@ function getProductSliders(data) {
                 $.each(result.data, async function (Idx, Obj) {
                     popProdSlideClone.find('h6').text(`${Obj.name}`)
                     popProdSlideClone.find('span').text(`${Obj.price}MMK`)
-                    popProdSlideClone.find('.latest-product__item').attr('href', `/shop-items?product_id=${Obj.id}`)
+                    popProdSlideClone.find('.latest-product__item').attr('href', `/shop-details?product_id=${Obj.id}`)
                     popProdHtml += popProdSlideClone.html();
 
                     if (((Idx + 1) % 3) == 0) {
@@ -160,7 +172,7 @@ function getProductSliders(data) {
                 $.each(result.data, async function (Idx, Obj) {
                     disProdSlideClone.find('h6').text(`${Obj.name}`)
                     disProdSlideClone.find('span').text(`${Obj.price}MMK`)
-                    disProdSlideClone.find('.latest-product__item').attr('href', `/shop-items?product_id=${Obj.id}`)
+                    disProdSlideClone.find('.latest-product__item').attr('href', `/shop-details?product_id=${Obj.id}`)
                     disProdHtml += disProdSlideClone.html();
 
                     if (((Idx + 1) % 3) == 0) {
@@ -172,7 +184,7 @@ function getProductSliders(data) {
                 $.each(result.data, async function (Idx, Obj) {
                     lttProdSlideClone.find('h6').text(`${Obj.name}`)
                     lttProdSlideClone.find('span').text(`${Obj.price}MMK`)
-                    lttProdSlideClone.find('.latest-product__item').attr('href', `/shop-items?product_id=${Obj.id}`)
+                    lttProdSlideClone.find('.latest-product__item').attr('href', `/shop-details?product_id=${Obj.id}`)
                     lttProdHtml += lttProdSlideClone.html();
 
                     if (((Idx + 1) % 3) == 0) {

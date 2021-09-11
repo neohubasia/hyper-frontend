@@ -11,7 +11,7 @@ block block-content
           .breadcrumb__text
             h2 Shopping Cart
             .breadcrumb__option
-              a(href='./index.html') Home
+              a(href='/') Home
               span Shopping Cart
   // Breadcrumb Section End
   // Shoping Cart Section Begin
@@ -19,65 +19,82 @@ block block-content
     .container
       .row
         .col-lg-12
+          form(method="post" action="#")
           .shoping__cart__table
             table
               thead
                 tr
+                  th.hidden__input
                   th.shoping__product Products
                   th Price
                   th Quantity
+                  th Discount
                   th Total
                   th
               tbody
                 tr
+                  td.hidden__cart__id
+                    input(type="hidden", value="test")
                   td.shoping__cart__item
                     img(src='https://via.placeholder.com/110x110/f5f5f5/555' alt='')
                     h5 Vegetable&rsquo;s Package
                   td.shoping__cart__price
-                    | $55.00
+                    | 1000
                   td.shoping__cart__quantity
                     .quantity
                       .pro-qty
-                        input(type='text' value='1')
+                        input(type='text' value='1' disabled)
+                  td.shoping__cart__discount 
+                    | 100
                   td.shoping__cart__total
-                    | $110.00
+                    | 900
                   td.shoping__cart__item__close
-                    span.icon_close
+                    button.btn.btn-delete-item
+                      i.text-danger.fa.fa-close
                 tr
+                  td.hidden__cart__id
+                    input(type="hidden", value="test")
                   td.shoping__cart__item
                     img(src='https://via.placeholder.com/110x110/f5f5f5/555' alt='')
                     h5 Fresh Garden Vegetable
                   td.shoping__cart__price
-                    | $39.00
+                    | 1000
                   td.shoping__cart__quantity
                     .quantity
                       .pro-qty
-                        input(type='text' value='1')
+                        input(type='text' value='1' disabled)
+                  td.shoping__cart__discount 
+                    | 0
                   td.shoping__cart__total
-                    | $39.99
+                    | 1000
                   td.shoping__cart__item__close
-                    span.icon_close
+                    button.btn.btn-delete-item
+                      i.text-danger.fa.fa-close
                 tr
+                  td.hidden__cart__id
+                    input(type="hidden", value="test")
                   td.shoping__cart__item
                     img(src='https://via.placeholder.com/110x110/f5f5f5/555' alt='')
                     h5 Organic Bananas
                   td.shoping__cart__price
-                    | $69.00
+                    | 1000
                   td.shoping__cart__quantity
                     .quantity
                       .pro-qty
-                        input(type='text' value='1')
+                        input(type='text' value='1' disabled)
+                  td.shoping__cart__discount 
+                    | 100
                   td.shoping__cart__total
-                    | $69.99
+                    | 900
                   td.shoping__cart__item__close
-                    span.icon_close
+                    button.btn.btn-delete-item
+                      i.text-danger.fa.fa-close
       .row
         .col-lg-12
           .shoping__cart__btns
-            a.primary-btn.cart-btn(href='#') CONTINUE SHOPPING
-            a.primary-btn.cart-btn.cart-btn-right(href='#')
-              span.icon_loading
-              |                             Upadate Cart
+            a.btn.primary-btn.cart-btn(href='/shop') CONTINUE SHOPPING
+            button.btn.primary-btn.cart-btn.cart-btn-right(href='#')
+              | Upadate Cart
         .col-lg-6
           .shoping__continue
             .shoping__discount
@@ -90,12 +107,15 @@ block block-content
             h5 Cart Total
             ul
               li
+                | Coupon 
+                span 0MMK
+              li
                 | Subtotal 
-                span $454.98
+                span 2800MMK
               li
                 | Total 
-                span $454.98
-            a.primary-btn(href='./checkout') PROCEED TO CHECKOUT
+                span 2800MMK
+            a.btn.primary-btn(href='./checkout') PROCEED TO CHECKOUT
   // Shoping Cart Section End
 block scripts
   script(src="../js/pages/shop-cart.js")

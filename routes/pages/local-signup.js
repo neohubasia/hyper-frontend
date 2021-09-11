@@ -6,8 +6,8 @@ var axiosHandler = require("../../library/axios-handler");
 
 var url = { signup: "/auth/signup" };
 
-router.get(url.signup, function(req, res, next) {
-  res.render('auth/signup', { title: 'Signup Page' });
+router.get(url.signup, function (req, res, next) {
+    res.render('auth/signup', { title: 'Signup Page' });
 });
 
 router.post(url.signup, function (req, res, next) {
@@ -16,7 +16,7 @@ router.post(url.signup, function (req, res, next) {
     req.body.customer_type = "normal";
     req.body.account_type = "itemplate";
 
-    axiosHandler.module.post('/c_api/customer_signup', req.body)
+    axiosHandler.module.post('/c-api/customer_signup', req.body)
         .then(response => {
             if (response.data.status == "SUCCESS") {
                 req.session.success = 'Your account is created. Please log in!';
@@ -25,7 +25,7 @@ router.post(url.signup, function (req, res, next) {
             else {
                 req.session.error = 'Could not create user. Please try again!';
                 res.redirect(url.signup)
-            } 
+            }
         })
         .catch(error => {
             console.log(error)

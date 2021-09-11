@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    // $(".header__menu").find(".header__menu__link").removeClass("active");
-    // $(".header__menu").find(".pages__menu__link").addClass("active");
+    $(".header__menu").find(".header__menu__link").removeClass("active");
+    $(".header__menu").find(".shop__menu__link").addClass("active");
 
     var cartList = sessionStorage.getItem('cartList');
     cartList = (cartList != null) ? JSON.parse(cartList) : {};
@@ -11,6 +11,10 @@ $(document).ready(function () {
             $(this).find('span').text(cartList.length)
         })
     }
+
+    $(".shoping__cart__table").on('click', '.btn-delete-item', function () {
+        $(this).closest('tr').remove();
+    });
 
     getBannerOne({ no_of_image: 1 });
 });

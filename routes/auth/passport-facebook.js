@@ -4,16 +4,16 @@ var axiosHandler = require("../../library/axios-handler");
 var FACEBOOK_APP_ID = '572369143904189';
 var FACEBOOK_APP_SECRET = '488e19f6071f42e0b9522818620f8be0';
 
-module.exports  = new FacebookStrategy({
-    clientID: FACEBOOK_APP_ID,
-    clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: "https://itemplate-marketplace.herokuapp.com/auth/facebook/callback",
-    profileFields: ['id', 'displayName', 'photos', 'email', 'gender'],
-    // profileFields: ['id', 'emails', 'username', 'displayName', 'name', 'gender', 'profileUrl', 'photos'],
-    // profileFields: ['id', 'email', 'gender', 'link', 'locale', 'name', 'timezone', 'updated_time', 'verified'],
-    passReqToCallback: true
-  },
-  function(request, accessToken, refreshToken, profile, done) {
+module.exports = new FacebookStrategy({
+  clientID: FACEBOOK_APP_ID,
+  clientSecret: FACEBOOK_APP_SECRET,
+  callbackURL: "https://itemplate-marketplace.herokuapp.com/auth/facebook/callback",
+  profileFields: ['id', 'displayName', 'photos', 'email', 'gender'],
+  // profileFields: ['id', 'emails', 'username', 'displayName', 'name', 'gender', 'profileUrl', 'photos'],
+  // profileFields: ['id', 'email', 'gender', 'link', 'locale', 'name', 'timezone', 'updated_time', 'verified'],
+  passReqToCallback: true
+},
+  function (request, accessToken, refreshToken, profile, done) {
     const profileObj = profile._json;
 
     let signupObj = {
@@ -22,7 +22,7 @@ module.exports  = new FacebookStrategy({
       displayName: profileObj.name,
       customer_type: "normal",
       account_type: "facebook",
-      oauth_profile:  {
+      oauth_profile: {
         refId: profileObj.id,
         email: profileObj.email,
         displayName: profileObj.name,
@@ -30,7 +30,7 @@ module.exports  = new FacebookStrategy({
       }
     };
 
-    axiosHandler.module.post('/c_api/customer_signup', signupObj)
+    axiosHandler.module.post('/c-api/customer_signup', signupObj)
       .then(response => {
         console.log(response)
         if (response.data.status == "SUCCESS") {

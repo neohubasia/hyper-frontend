@@ -32,7 +32,7 @@ router.get('/shop-items', function (req, res, next) {
   res.render('pages/shop-items', { ...conf.app, auth: req.user });
 });
 
-router.get('/shop-details/:product_id', function (req, res, next) {
+router.get('/shop-details', function (req, res, next) {
   if (req.user) {
     res.locals.authUser = req.user;
     req.user = JSON.stringify(req.user);
@@ -40,7 +40,7 @@ router.get('/shop-details/:product_id', function (req, res, next) {
   res.render('pages/shop-details', { ...conf.app, auth: req.user });
 });
 
-router.get('/shop-cart', function (req, res, next) {
+router.get('/shop-cart', isLogin('/auth/login'), function (req, res, next) {
   if (req.user) {
     res.locals.authUser = req.user;
     req.user = JSON.stringify(req.user);

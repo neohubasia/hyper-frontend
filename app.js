@@ -26,15 +26,15 @@ app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
 app.use(expressSession);
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   var msgs = req.session.messages || [];
   res.locals.messages = msgs;
-  res.locals.hasMessages = !! msgs.length;
+  res.locals.hasMessages = !!msgs.length;
   req.session.messages = [];
   next();
 });
@@ -45,19 +45,19 @@ passport.use(passportLocal);
 passport.use(passportFacebook);
 passport.use(passportGoogle);
 
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function (user, done) {
   done(null, user);
 });
 
-passport.deserializeUser(function(user, done) {
+passport.deserializeUser(function (user, done) {
   done(null, user);
 });
 
 // Session-persisted message middleware
-app.use(function(req, res, next){
+app.use(function (req, res, next) {
   var error = req.session.error,
-      success = req.session.success;
-      notice = req.session.notice,
+    success = req.session.success,
+    notice = req.session.notice;
 
   delete req.session.error;
   delete req.session.success;
@@ -73,12 +73,12 @@ app.use(function(req, res, next){
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-fs.readdirSync(__dirname + '/routes/pages').forEach(function(name){
+fs.readdirSync(__dirname + '/routes/pages').forEach(function (name) {
   var obj = require(path.join(__dirname, '/routes/pages/' + name));
   routeModules.push(obj);
 });
 
-fs.readdirSync(__dirname + '/routes/api').forEach(function(name){
+fs.readdirSync(__dirname + '/routes/api').forEach(function (name) {
   var obj = require(path.join(__dirname, '/routes/api/' + name));
   apiModules.push(obj);
 });
@@ -88,7 +88,7 @@ app.use(routeModules);
 app.use(apiModules);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 

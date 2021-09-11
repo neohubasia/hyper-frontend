@@ -20,7 +20,7 @@ module.exports = new GoogleStrategy({
       displayName: profileObj.name,
       customer_type: "normal",
       account_type: "gmail",
-      oauth_profile:  {
+      oauth_profile: {
         refId: profileObj.sub,
         email: profileObj.email,
         displayName: profileObj.name,
@@ -28,7 +28,7 @@ module.exports = new GoogleStrategy({
       }
     };
 
-    axiosHandler.module.post('/c_api/customer_signup', signupObj)
+    axiosHandler.module.post('/c-api/customer_signup', signupObj)
       .then(response => {
         console.log(response)
         if (response.data.status == "SUCCESS") {

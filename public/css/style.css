@@ -1149,8 +1149,8 @@ ol {
 	left: 160px;
 	/* top: 13px;
 	height: 1.8px;
-	width: 5px; */
-	/* background: #15a5b5; */
+	width: 5px;
+	background: #15a5b5; */
 	content: "to";
 }
 
@@ -1312,7 +1312,7 @@ ol {
 .product__discount__item__pic .product__discount__percent {
 	height: 45px;
 	width: 45px;
-	background: #15a5b5;
+	background: #dc3545;
 	border-radius: 50%;
 	font-size: 14px;
 	color: #fff;
@@ -1346,17 +1346,17 @@ ol {
 	margin-right: 0;
 }
 
-.product__item__pic__hover li:hover a {
+.product__item__pic__hover li:hover button {
 	background: #15a5b5;
 	border-color: #15a5b5;
 }
 
-.product__item__pic__hover li:hover a i {
+.product__item__pic__hover li:hover button i {
 	color: #fff;
 	transform: rotate(360deg);
 }
 
-.product__item__pic__hover li a {
+.product__item__pic__hover li button {
 	font-size: 16px;
 	color: #333;
 	height: 40px;
@@ -1374,7 +1374,7 @@ ol {
 	transition: all, 0.5s;
 }
 
-.product__item__pic__hover li a i {
+.product__item__pic__hover li button i {
 	position: relative;
 	transform: rotate(0);
 	-webkit-transition: all, 0.3s;
@@ -1417,6 +1417,10 @@ ol {
 	margin-left: 10px;
 }
 
+.product__discount__slider {
+	margin-bottom: -30px;
+}
+
 .product__discount__slider .col-lg-4 {
 	max-width: 100%;
 }
@@ -1424,6 +1428,7 @@ ol {
 .product__discount__slider.owl-carousel .owl-dots {
 	text-align: center;
 	margin-top: 30px;
+	margin-bottom: -30px;
 }
 
 .product__discount__slider.owl-carousel .owl-dots button {
@@ -1586,17 +1591,17 @@ ol {
 	margin-right: 0;
 }
 
-.product__item__pic__hover li:hover a {
+.product__item__pic__hover li:hover button {
 	background: #15a5b5;
 	border-color: #15a5b5;
 }
 
-.product__item__pic__hover li:hover a i {
+.product__item__pic__hover li:hover button i {
 	color: #fff;
 	transform: rotate(360deg);
 }
 
-.product__item__pic__hover li a {
+.product__item__pic__hover li button {
 	font-size: 16px;
 	color: #333;
 	height: 40px;
@@ -1614,7 +1619,7 @@ ol {
 	transition: all, 0.5s;
 }
 
-.product__item__pic__hover li a i {
+.product__item__pic__hover li button i {
 	position: relative;
 	transform: rotate(0);
 	-webkit-transition: all, 0.3s;
@@ -1956,6 +1961,13 @@ ol {
 	width: 100px;
 }
 
+.shoping__cart__table table tbody tr td.shoping__cart__discount {
+	font-size: 18px;
+	color: #f99;
+	font-weight: 700;
+	width: 100px;
+}
+
 .shoping__cart__table table tbody tr td.shoping__cart__total {
 	font-size: 18px;
 	color: #333;
@@ -2035,10 +2047,11 @@ ol {
 }
 
 .shoping__discount form button {
-	padding: 15px 30px 11px;
+	padding: 15px 30px 13px;
 	font-size: 12px;
 	letter-spacing: 4px;
-	background: #6f6f6f;
+	color: #ffffff;
+	background: #ffc105;
 }
 
 .shoping__checkout {
@@ -2083,6 +2096,7 @@ ol {
 }
 
 .shoping__checkout .primary-btn {
+	color: #fff;
 	display: block;
 	text-align: center;
 }
@@ -3676,4 +3690,27 @@ ol {
 #topButton:hover {
 	background-color: #ffc105;
 	/* Add a dark-grey background on hover */
+}
+
+/* Shopping Cart - Item Delete Button */
+
+/* Style buttons */
+.btn-delete-item {
+	background-color: #f8f9fa;
+	/* Blue background */
+	border: none;
+	/* Remove borders */
+	color: white;
+	/* White text */
+	padding: 8px 14px;
+	/* Some padding */
+	font-size: 16px;
+	/* Set a font size */
+	cursor: pointer;
+	/* Mouse pointer on hover */
+}
+
+/* Darker background on mouse-over */
+.btn-delete-item:hover {
+	background-color: #F3F6FA;
 }

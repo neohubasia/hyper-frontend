@@ -53,11 +53,6 @@ function swalWarning(args, icon = "warning") {
 
 function checkAuthEnsure() {
     if (Object.keys(authData).length <= 0) {
-        // swalWarning({
-        //     icon: "warning",
-        //     title: "Warning Message",
-        //     text: "The specified number of images has been reached",
-        // }); that is general calling
 
         Swal.fire({
             icon: "warning",
@@ -190,8 +185,26 @@ function addToCart(productId, quantity) {
         type: "post",
         dataType: 'json',
         success: function (response) {
-            console.log("ADD TO CART ", response)
-            alert("Process to Add to cart  update")
+            if (response.status == "SUCCESS" && response.data) {
+                shopCartCount();
+
+                var cartList = sessionStorage.getItem('cartList');
+                cartList = (cartList != null) ? JSON.parse(cartList) : {};
+
+                if (cartList && cartList.length > 0) {
+                    $('.shopCartCount').each(function () {
+                        // console.log("Local Storage ", cartList)
+                        $(this).find('span').text(cartList.length)
+                    })
+                }
+            }
+            else {
+                swalWarning({
+                    icon: "warning",
+                    title: "Warning Message",
+                    text: "Sorry, You can't add item to cart",
+                });
+            }
         }
     });
 }
@@ -314,19 +327,44 @@ function addToCart(productId, quantity) {
     proQty.prepend('<span class="dec qtybtn">-</span>');
     proQty.append('<span class="inc qtybtn">+</span>');
     proQty.on('click', '.qtybtn', function () {
-        var $button = $(this);
-        var oldValue = $button.parent().find('input').val();
-        if ($button.hasClass('inc')) {
-            var newVal = parseFloat(oldValue) + 1;
-        } else {
+        var newQty = 0, subSumTotal = 0, sumTotal = 0;
+        var oldQty = $(this).parent().find('input').val();
+        var itmPrice = $(this).closest("tr").find(".shoping__cart__price").text();
+        var totPrice = $(this).closest("tr").find(".shoping__cart__total").text();
+        var disPrice = $(this).closest("tr").find(".shoping__cart__discount").text()
+
+        if ($(this).hasClass('inc')) {
+            var newQty = parseFloat(oldQty) + 1;
+            totPrice = (itmPrice - disPrice) * newQty
+        }
+        else {
             // Don't allow decrementing below zero
-            if (oldValue > 0) {
-                var newVal = parseFloat(oldValue) - 1;
-            } else {
-                newVal = 0;
+            if (oldQty > 0) {
+                var newQty = parseFloat(oldQty) - 1;
+                totPrice = (itmPrice - disPrice) * newQty
+            }
+            else {
+                newQty = 0;
             }
         }
-        $button.parent().find('input').val(newVal);
+
+        $(this).parent().find('input').val(newQty);
+        $(this).closest("tr").find(".shoping__cart__total").text(totPrice)
+
+        $(".shoping__cart__total").each(function () {
+            totPrice = $.trim($(this).text());
+
+            if (totPrice) {
+                totPrice = parseFloat(totPrice.replace(/^\$/, ""));
+
+
+                subSumTotal += !isNaN(totPrice) ? totPrice : 0;
+                sumTotal += !isNaN(totPrice) ? totPrice : 0;
+            }
+        });
+
+        $('.shoping__checkout').find('span:eq(1)').text(subSumTotal + "MMK")
+        $('.shoping__checkout').find('span:last').text(sumTotal + "MMK")
     });
 
 })(jQuery);
