@@ -82,6 +82,7 @@ script(src='../js/common.js')
 script.
   window.onscroll = function () { onScrollTrack() };
   var navbar = document.getElementById("navbar");
+  var topBtn = document.getElementById("topButton");
   var sticky = navbar.offsetTop || 47;
   var isNew = true;
 
@@ -93,6 +94,12 @@ script.
       navbar.classList.add("sticky")
     } else {
       navbar.classList.remove("sticky");
+    }
+
+    if (document.body.scrollTop > sticky || document.documentElement.scrollTop > sticky) {
+      topBtn.style.display = "block";
+    } else {
+      topBtn.style.display = "none";
     }
   }
 
@@ -132,6 +139,13 @@ script.
     }
     $('.header__top__right__language').find('#choose_me').text(langObj.choose_me);
   }
+
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
+
 
   setLanguage.call(this,  localStorage.getItem('lang') ?  localStorage.getItem('lang') : 'en');
 

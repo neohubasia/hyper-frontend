@@ -193,7 +193,7 @@ function getPopProductSliders(data) {
                     lttProdSlideClone.find('span').text(`${Obj.price}MMK`)
                     lttProdHtml += lttProdSlideClone.html();
 
-                    if (((Idx + 1) % 3) == 0) {
+                    if (((Idx + 1) % 4) == 0) {
                         lttProdSlideHtml += `<div class="latest-product__slider owl-carousel"><div class="latest-prdouct__slider__item">` + lttProdHtml + `</div></div>`;
                         lttProdHtml = "";
                     }
@@ -240,7 +240,7 @@ function getlttProductSliders(data) {
                     lttProdSlideClone.find('span').text(`${Obj.price}MMK`)
                     lttProdHtml += lttProdSlideClone.html();
 
-                    if (((Idx + 1) % 3) == 0) {
+                    if (((Idx + 1) % 4) == 0) {
                         lttProdSlideHtml += `<div class="latest-product__slider owl-carousel"><div class="latest-prdouct__slider__item">` + lttProdHtml + `</div></div>`;
                         lttProdHtml = "";
                     }

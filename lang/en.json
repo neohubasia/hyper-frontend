@@ -2,12 +2,12 @@
     "choose_me": "En",
     "menu__link": {
         "home": "Home",
-        "shop": "Shop",
+        "shop": "Marketplace",
         "store": "Officail Store",
-        "pages": "Today's Pages",
-        "popular_item": "Popular Item",
-        "discount_item": "Discount Item",
-        "latest_item": "Latest Item",
+        "pages": "For You",
+        "popular_item": "Popular Products",
+        "discount_item": "Discount Products",
+        "latest_item": "Latest Products",
         "contact": "Contact"
     }
 }

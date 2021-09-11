@@ -204,7 +204,7 @@ function addToCart(productId, quantity) {
     --------------------*/
     $(window).on('load', function () {
         $(".loader").fadeOut();
-        $("#preloader").delay(100).fadeOut(100);
+        $("#preloader").delay(1500).fadeOut(300);
 
         /*------------------
             Gallery filter
