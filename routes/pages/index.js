@@ -5,6 +5,7 @@ var isLogin = require('connect-ensure-login').ensureLoggedIn;
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
+  console.log("Uer Data", req.user)
   if (req.user) {
     res.locals.authUser = req.user;
     req.user = JSON.stringify(req.user);

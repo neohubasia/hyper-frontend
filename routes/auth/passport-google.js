@@ -30,8 +30,8 @@ module.exports = new GoogleStrategy({
 
     axiosHandler.module.post('/c-api/customer_signup', signupObj)
       .then(response => {
-        console.log(response)
         if (response.data.status == "SUCCESS") {
+          console.log("Sign Up Data ", response.data.data)
           return done(null, response.data.data);
         }
         else {

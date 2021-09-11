@@ -31,6 +31,7 @@ module.exports = new LocalStrategy({
             return done(null, false, { message: 'Incorrect username or password!' });
         }
         req.session.success = 'You are successfully logged in ' + username + '!';
+        console.log("Login Data ", response.data.user)
         return done(null, response.data.user);
     }
 );
