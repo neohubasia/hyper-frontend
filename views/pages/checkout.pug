@@ -30,80 +30,79 @@ block block-content
           .row
             .col-lg-8.col-md-6
               .row
-                .col-lg-6
+                .col-lg-4
                   .checkout__input
                     p
                       | Fist Name
                       span *
-                    input(type='text')
-                .col-lg-6
+                    input(type='text' name='first_name' value=`${authUser.first_name}`)
+                .col-lg-4
                   .checkout__input
                     p
                       | Last Name
                       span *
-                    input(type='text')
-              .checkout__input
-                p
-                  | Country
-                  span *
-                input(type='text')
-              .checkout__input
-                p
-                  | Address
-                  span *
-                input.checkout__input__add(type='text' placeholder='Street Address')
-                input(type='text' placeholder='Apartment, suite, unite ect (optinal)')
-              .checkout__input
-                p
-                  | Town/City
-                  span *
-                input(type='text')
-              .checkout__input
-                p
-                  | Country/State
-                  span *
-                input(type='text')
-              .checkout__input
-                p
-                  | Postcode / ZIP
-                  span *
-                input(type='text')
+                    input(type='text' name='last_name' value=`${authUser.last_name}` )
+                .col-lg-4
+                  .checkout__input
+                    p
+                      | Display Name
+                      span *
+                    input(type='text' name='displayName' value=`${authUser.displayName}`)
+
+              h4 Shipping Information
               .row
-                .col-lg-6
+                .col-lg-4
                   .checkout__input
                     p
-                      | Phone
+                      | Contact Name
                       span *
-                    input(type='text')
-                .col-lg-6
+                    input(type='text' name='address[contactName]' value=`${authUser.address.contactName}`)
+                .col-lg-4
                   .checkout__input
                     p
-                      | Email
+                      | Primary Mobile
                       span *
-                    input(type='text')
-              .checkout__input__checkbox
-                label(for='acc')
-                  | Create an account?
-                  input#acc(type='checkbox')
-                  span.checkmark
+                    input(type='text' name='address[primaryMobile]' value=`${authUser.address.primaryMobile}` )
+                .col-lg-4
+                  .checkout__input
+                    p
+                      | Secondary Mobile
+                    input(type='text' name='address[secoundaryMobile]' value=`${authUser.address.secoundaryMobile}`)
+              .row
+                .col-lg-4
+                  .checkout__input
+                    p
+                      | Country
+                      span *
+                    select.checkout__input__add#country(name="address[country]")
+                      option(value="Myanmar") Myanmar
+                .col-lg-4
+                  .checkout__input
+                    p
+                      | Region/State
+                      span *
+                    select.checkout__input__add#country(name="address[cityid]")
+                      option(value="#") Mandalay
+                .col-lg-4
+                  .checkout__input
+                    p
+                      | Township
+                      span *
+                    select.checkout__input__add#country(name="address[townshipid]")
+                      option(value="#") Myingyan
+              
+              .row 
+                .col-lg-12
+                  .checkout__input
+                    p
+                      | Address
+                      span *
+                    textarea#address(name="address[address]", cols="30", rows="10")
+
               p
                 | Create an account by entering the information below. If you are a returning customer
                 | please login at the top of the page
-              .checkout__input
-                p
-                  | Account Password
-                  span *
-                input(type='text')
-              .checkout__input__checkbox
-                label(for='diff-acc')
-                  | Ship to a different address?
-                  input#diff-acc(type='checkbox')
-                  span.checkmark
-              .checkout__input
-                p
-                  | Order notes
-                  span *
-                input(type='text' placeholder='Notes about your order, e.g. special notes for delivery.')
+
             .col-lg-4.col-md-6
               .checkout__order
                 h4 Your Order

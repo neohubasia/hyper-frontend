@@ -2,15 +2,15 @@ var express = require('express');
 var router = express.Router();
 var conf = require("../../_data/config.json");
 var isLogin = require('connect-ensure-login').ensureLoggedIn;
+var axiosHandler = require("../../library/axios-handler");
+
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  console.log("Uer Data 1", req.user)
   if (req.user) {
     res.locals.authUser = req.user;
     req.user = JSON.stringify(req.user);
   }
-  console.log("Uer Data 2", req.user)
   res.render('pages/index', { ...conf.app, auth: req.user });
 });
 
@@ -44,10 +44,19 @@ router.get('/shop-details', function (req, res, next) {
 
 router.get('/shop-cart', isLogin('/auth/login'), function (req, res, next) {
   if (req.user) {
-    res.locals.authUser = req.user;
-    req.user = JSON.stringify(req.user);
+    axiosHandler.module.get('/api/cart', {
+      params: { customerId: req.user._id || req.user.id }
+    })
+      .then(function (response) {
+        res.locals.authUser = req.user;
+        req.user = JSON.stringify(req.user);
+        res.render('pages/shop-cart', { ...conf.app, auth: req.user, data: response.data.data });
+      })
+      .catch(function (error) {
+        console.log("Error ", error)
+        res.render('pages/shop-cart', { ...conf.app, auth: req.user, data: null });
+      })
   }
-  res.render('pages/shop-cart', { ...conf.app, auth: req.user });
 });
 
 router.get('/official-store', function (req, res, next) {

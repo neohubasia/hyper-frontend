@@ -107,6 +107,27 @@ ol {
 	margin: 0;
 }
 
+/* width */
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #eee;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #ccc;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #aaa;
+}
+
 /*---------------------
   Helper CSS
 -----------------------*/
@@ -2031,7 +2052,7 @@ ol {
 	margin-bottom: 25px;
 }
 
-.shoping__discount form input {
+.shoping__discount .apply__coupon input {
 	width: 255px;
 	height: 46px;
 	border: 1px solid #F3F6FA;
@@ -2042,11 +2063,11 @@ ol {
 	margin-right: 15px;
 }
 
-.shoping__discount form input::placeholder {
+.shoping__discount .apply__coupon input::placeholder {
 	color: #b2b2b2;
 }
 
-.shoping__discount form button {
+.shoping__discount .apply__coupon button {
 	padding: 15px 30px 13px;
 	font-size: 12px;
 	letter-spacing: 4px;
@@ -2155,7 +2176,9 @@ ol {
 	color: #15a5b5;
 }
 
-.checkout__input input {
+.checkout__input input,
+.nice-select,
+textarea {
 	width: 100%;
 	height: 46px;
 	border: 1px solid #ebebeb;
@@ -2165,11 +2188,16 @@ ol {
 	border-radius: 4px;
 }
 
-.checkout__input input.checkout__input__add {
+.nice-select .list {
+	width: 100%;
+}
+
+.checkout__input .checkout__input__add {
 	margin-bottom: 20px;
 }
 
-.checkout__input input::placeholder {
+.checkout__input input::placeholder,
+.nice-select::placeholder {
 	color: #b2b2b2;
 }
 
@@ -2976,7 +3004,7 @@ ol {
 		width: 265px;
 	}
 
-	.shoping__discount form input {
+	.shoping__discount .apply__coupon input {
 		width: 240px;
 	}
 }
@@ -3334,7 +3362,7 @@ ol {
 		overflow-y: auto;
 	}
 
-	.shoping__discount form input {
+	.shoping__discount .apply__coupon input {
 		margin-bottom: 15px;
 	}
 
@@ -3617,7 +3645,7 @@ ol {
 		margin-right: 15px;
 	}
 
-	.shoping__discount form input {
+	.shoping__discount .apply__coupon input {
 		width: 100%;
 	}
 

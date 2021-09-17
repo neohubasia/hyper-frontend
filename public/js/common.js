@@ -51,6 +51,17 @@ function swalWarning(args, icon = "warning") {
     });
 }
 
+function alertWarning(holderDiv, alertType, title, message) {
+    $(holderDiv).html(`
+        <div class="alert alert-dismissible ${alertType}" role="alert">
+            <strong>${title}</strong><span> ${message}</span>
+            <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                <span class="fa fa-close" aria-hidden="true"></span>
+            </button>
+        </div>`)
+}
+
+
 function checkAuthEnsure() {
     if (Object.keys(authData).length <= 0) {
 
@@ -178,7 +189,7 @@ function addToCart(productId, quantity) {
     $.ajax({
         url: '/api/addToCart',
         data: {
-            customerId: authData._id,
+            customerId: authData._id || authData._id,
             productId: productId,
             quantity: quantity
         },
@@ -207,6 +218,25 @@ function addToCart(productId, quantity) {
             }
         }
     });
+}
+
+
+function calculateTotal(divClassName) {
+    var subSumTotal = 0, sumTotal = 0;
+    $(divClassName).each(function () {
+        var totPrice = $.trim($(this).text());
+
+        if (totPrice) {
+            totPrice = parseFloat(totPrice.replace(/^\$/, ""));
+            subSumTotal += !isNaN(totPrice) ? totPrice : 0;
+            sumTotal += !isNaN(totPrice) ? totPrice : 0;
+        }
+    });
+
+    $('.shoping__checkout').find('span:eq(1)').text(subSumTotal + "MMK")
+    $('.shoping__checkout').find('span:last').text(sumTotal + "MMK")
+
+    shopCartCount();
 }
 
 
@@ -327,7 +357,7 @@ function addToCart(productId, quantity) {
     proQty.prepend('<span class="dec qtybtn">-</span>');
     proQty.append('<span class="inc qtybtn">+</span>');
     proQty.on('click', '.qtybtn', function () {
-        var newQty = 0, subSumTotal = 0, sumTotal = 0;
+        var newQty = 0;
         var oldQty = $(this).parent().find('input').val();
         var itmPrice = $(this).closest("tr").find(".shoping__cart__price").text();
         var totPrice = $(this).closest("tr").find(".shoping__cart__total").text();
@@ -351,20 +381,9 @@ function addToCart(productId, quantity) {
         $(this).parent().find('input').val(newQty);
         $(this).closest("tr").find(".shoping__cart__total").text(totPrice)
 
-        $(".shoping__cart__total").each(function () {
-            totPrice = $.trim($(this).text());
 
-            if (totPrice) {
-                totPrice = parseFloat(totPrice.replace(/^\$/, ""));
+        calculateTotal.call(this, ".shoping__cart__total")
 
-
-                subSumTotal += !isNaN(totPrice) ? totPrice : 0;
-                sumTotal += !isNaN(totPrice) ? totPrice : 0;
-            }
-        });
-
-        $('.shoping__checkout').find('span:eq(1)').text(subSumTotal + "MMK")
-        $('.shoping__checkout').find('span:last').text(sumTotal + "MMK")
     });
 
 })(jQuery);

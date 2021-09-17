@@ -17,91 +17,75 @@ block block-content
   // Shoping Cart Section Begin
   section.shoping-cart.spad
     .container
+      - var subSumTotal = 0, sumTotal = 0;
+
       .row
         .col-lg-12
-          form(method="post" action="#")
-          .shoping__cart__table
-            table
-              thead
-                tr
-                  th.hidden__input
-                  th.shoping__product Products
-                  th Price
-                  th Quantity
-                  th Discount
-                  th Total
-                  th
-              tbody
-                tr
-                  td.hidden__cart__id
-                    input(type="hidden", value="test")
-                  td.shoping__cart__item
-                    img(src='https://via.placeholder.com/110x110/f5f5f5/555' alt='')
-                    h5 Vegetable&rsquo;s Package
-                  td.shoping__cart__price
-                    | 1000
-                  td.shoping__cart__quantity
-                    .quantity
-                      .pro-qty
-                        input(type='text' value='1' disabled)
-                  td.shoping__cart__discount 
-                    | 100
-                  td.shoping__cart__total
-                    | 900
-                  td.shoping__cart__item__close
-                    button.btn.btn-delete-item
-                      i.text-danger.fa.fa-close
-                tr
-                  td.hidden__cart__id
-                    input(type="hidden", value="test")
-                  td.shoping__cart__item
-                    img(src='https://via.placeholder.com/110x110/f5f5f5/555' alt='')
-                    h5 Fresh Garden Vegetable
-                  td.shoping__cart__price
-                    | 1000
-                  td.shoping__cart__quantity
-                    .quantity
-                      .pro-qty
-                        input(type='text' value='1' disabled)
-                  td.shoping__cart__discount 
-                    | 0
-                  td.shoping__cart__total
-                    | 1000
-                  td.shoping__cart__item__close
-                    button.btn.btn-delete-item
-                      i.text-danger.fa.fa-close
-                tr
-                  td.hidden__cart__id
-                    input(type="hidden", value="test")
-                  td.shoping__cart__item
-                    img(src='https://via.placeholder.com/110x110/f5f5f5/555' alt='')
-                    h5 Organic Bananas
-                  td.shoping__cart__price
-                    | 1000
-                  td.shoping__cart__quantity
-                    .quantity
-                      .pro-qty
-                        input(type='text' value='1' disabled)
-                  td.shoping__cart__discount 
-                    | 100
-                  td.shoping__cart__total
-                    | 900
-                  td.shoping__cart__item__close
-                    button.btn.btn-delete-item
-                      i.text-danger.fa.fa-close
+          form#updateCartForm(method="post" action="/api/updateCart")
+            .shoping__cart__table
+              table
+                thead
+                  tr
+                    th.hidden__input
+                    th.shoping__product Products
+                    th Price
+                    th Quantity
+                    th Discount
+                    th Total
+                    th
+                tbody
+                  if (data && data.length > 0)
+                    each cartObj,cartIdx in data  
+
+                      - var itemQty = cartObj.quantity, disPrice = 0,totalPrice = 0;
+
+                      if (cartObj.productId.discount_id)
+                        - var discountType = cartObj.productId.discount_id.discount_type
+                        - var discountAmt = cartObj.productId.discount_id.discount_amount
+
+                        if (discountType == "amount")
+                          - disPrice = discountAmt;
+                        else if (discountType == "percent")
+                          - disPrice = cartObj.productId.price * (discountAmt / 100)
+                          
+                        - totalPrice = (cartObj.productId.price - disPrice) * itemQty
+                        - subSumTotal += totalPrice;
+                        - sumTotal += totalPrice;
+                      tr
+                        td.hidden__cart__id
+                          input(type="hidden", name=`data[${cartIdx}][id]`, value=`${cartObj.id}`)
+                        td.shoping__cart__item
+                          img(src='https://via.placeholder.com/110x110/f5f5f5/555' alt='')
+                          h5 !{cartObj.productId.name} - !{cartObj.productId.sku}
+                        td.shoping__cart__price
+                          | !{cartObj.productId.price}
+                        td.shoping__cart__quantity
+                          .quantity
+                            .pro-qty
+                              input(type='text' name=`data[${cartIdx}][quantity]` value=`${itemQty}` readonly)
+                        td.shoping__cart__discount 
+                          | !{disPrice}
+                        td.shoping__cart__total
+                          | !{totalPrice}
+                        td.shoping__cart__item__close
+                          button.btn.btn-delete-item(type='button')
+                            i.text-danger.fa.fa-close
+            .row  
+              .col-lg-12
+                .shoping__cart__btns
+                  a.btn.primary-btn.cart-btn(href='/shop') CONTINUE SHOPPING
+                  button.btn.primary-btn.cart-btn.cart-btn-right(type="submit")
+                    | Upadate Cart
+            #msgAlert.mt-5
+            
       .row
-        .col-lg-12
-          .shoping__cart__btns
-            a.btn.primary-btn.cart-btn(href='/shop') CONTINUE SHOPPING
-            button.btn.primary-btn.cart-btn.cart-btn-right(href='#')
-              | Upadate Cart
         .col-lg-6
           .shoping__continue
             .shoping__discount
               h5 Discount Codes
-              form(action='#')
+              div.apply__coupon
                 input(type='text' placeholder='Enter your coupon code')
-                button.site-btn(type='submit') APPLY COUPON
+                button.site-btn(type='button') APPLY COUPON
         .col-lg-6
           .shoping__checkout
             h5 Cart Total
@@ -111,10 +95,10 @@ block block-content
                 span 0MMK
               li
                 | Subtotal 
-                span 2800MMK
+                span !{subSumTotal}MMK
               li
                 | Total 
-                span 2800MMK
+                span !{sumTotal}MMK
             a.btn.primary-btn(href='./checkout') PROCEED TO CHECKOUT
   // Shoping Cart Section End
 block scripts
