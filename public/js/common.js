@@ -172,10 +172,10 @@ function shopCartCount() {
             customerId: authData._id
         },
         dataType: 'json',
-        success: function (response) {
+        success: function (result) {
             $('.shopCartCount').each(function () {
-                $(this).find('span').text(response.data.length)
-                sessionStorage.setItem('cartList', JSON.stringify(response.data))
+                $(this).find('span').text(result.data.length)
+                sessionStorage.setItem('cartList', JSON.stringify(result.data))
             })
         }
     });
@@ -195,8 +195,8 @@ function addToCart(productId, quantity) {
         },
         type: "post",
         dataType: 'json',
-        success: function (response) {
-            if (response.status == "SUCCESS" && response.data) {
+        success: function (result) {
+            if (result.status == "SUCCESS" && result.data) {
                 shopCartCount();
 
                 var cartList = sessionStorage.getItem('cartList');
@@ -239,6 +239,46 @@ function calculateTotal(divClassName) {
     shopCartCount();
 }
 
+function getCity(args) {
+    $.ajax({
+        url: '/api/getCity',
+        data: args.query,
+        dataType: 'json',
+        success: function (result) {
+            if (result && result.status == "SUCCESS") {
+                let optionHtml = '<option value="#" data-display="-- Select One--"  disabled selected>-- Select One--</option>';
+
+                $.each(result.data, async function (Idx, obj) {
+                    optionHtml += `<option value=${obj.id} data-display=${obj[args.showName]}> ${obj[args.showName]} </option>`;
+                });
+
+                // As a selected
+                $(args.selectId).html(optionHtml).val('#').niceSelect('update')
+            }
+        }
+    });
+}
+
+function getTownship(args) {
+    $.ajax({
+        url: '/api/getTownship',
+        data: args.query,
+        dataType: 'json',
+        success: function (result) {
+            if (result && result.status == "SUCCESS") {
+                let optionHtml = '<option value="#" data-display="-- Select One--" disabled selected>-- Select One--</option>';
+
+                $.each(result.data, async function (Idx, obj) {
+                    optionHtml += `<option value=${obj.id} data-display=${obj[args.showName]}> ${obj[args.showName]} </option>`;
+                });
+
+                // As a selected
+                $(args.selectId).html(optionHtml).val('#').niceSelect('update')
+            }
+        }
+    });
+}
+
 
 (function ($) {
 
@@ -247,7 +287,7 @@ function calculateTotal(divClassName) {
     --------------------*/
     $(window).on('load', function () {
         $(".loader").fadeOut();
-        $("#preloader").delay(1500).fadeOut(300);
+        $("#preloader").delay(500).fadeOut(500);
 
         /*------------------
             Gallery filter
@@ -331,10 +371,6 @@ function calculateTotal(divClassName) {
     minamount.val(rangeSlider.slider("values", 0));
     maxamount.val(rangeSlider.slider("values", 1));
 
-    /*--------------------------
-        Select
-    ----------------------------*/
-    $("select").niceSelect();
 
     /*------------------
         Single Product
@@ -349,6 +385,11 @@ function calculateTotal(divClassName) {
             });
         }
     });
+
+    /*------------------
+        Nice Select
+    --------------------*/
+    $('select').niceSelect()
 
     /*-------------------
         Quantity change

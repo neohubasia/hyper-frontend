@@ -2209,7 +2209,6 @@ textarea {
 	position: relative;
 	font-size: 16px;
 	color: #333;
-	padding-left: 40px;
 	cursor: pointer;
 }
 
@@ -2229,10 +2228,10 @@ textarea {
 
 .checkout__input__checkbox label .checkmark {
 	position: absolute;
-	left: 0;
-	top: 4px;
-	height: 16px;
-	width: 14px;
+	left: 0px;
+	top: 2.5px;
+	height: 18px;
+	width: 18px;
 	border: 1px solid #a6a6a6;
 	content: "";
 	border-radius: 4px;
@@ -2240,8 +2239,8 @@ textarea {
 
 .checkout__input__checkbox label .checkmark:after {
 	position: absolute;
-	left: 1px;
-	top: 1px;
+	left: 2.8px;
+	top: 2.2px;
 	width: 10px;
 	height: 8px;
 	border: solid white;

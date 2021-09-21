@@ -28,9 +28,19 @@ function getBannerOne(data) {
                     originUrl: $("#breadCrumb").data('setbg')
                 });
             }
+
+            getCity({ query: {}, selectId: '#city', showName: "city_mm" })
         },
         error: function (xhr) {
             console.log("Banner ", xhr)
         }
     });
 }
+
+$('#city').on('change', function () {
+    getTownship({
+        query: { cityid: this.value },
+        selectId: "#township",
+        showName: "township_mm"
+    })
+})

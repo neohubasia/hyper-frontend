@@ -69,10 +69,19 @@ router.get('/official-store', function (req, res, next) {
 
 router.get('/checkout', isLogin('/auth/login'), function (req, res, next) { // ensure auth
   if (req.user) {
-    res.locals.authUser = req.user;
-    req.user = JSON.stringify(req.user);
+    axiosHandler.module.get('/api/cart', {
+      params: { customerId: req.user._id || req.user.id }
+    })
+      .then(function (response) {
+        res.locals.authUser = req.user;
+        req.user = JSON.stringify(req.user);
+        res.render('pages/checkout', { ...conf.app, auth: req.user, data: response.data.data });
+      })
+      .catch(function (error) {
+        console.log("Error ", error)
+        res.render('pages/checkout', { ...conf.app, auth: req.user, data: null });
+      })
   }
-  res.render('pages/checkout', { ...conf.app, auth: req.user });
 });
 
 router.get('/contact', function (req, res, next) {
