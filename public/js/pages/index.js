@@ -23,12 +23,13 @@ function getBannerOne(data) {
         dataType: 'json',
         success: function (result) {
             if (result.status == "SUCCESS" && result.data) {
+                console.log(baseUrl + result.data[0].images[0])
                 $("#homeBanner-1").safeUrl({
                     changeUrl: baseUrl + result.data[0].images[0],
                     originUrl: $("#homeBanner-1").data('setbg')
                 });
-                getBannerTwo({ no_of_image: 2 });
             }
+            getBannerTwo({ no_of_image: 2 });
 
         },
         error: function (xhr) {
@@ -51,6 +52,7 @@ async function getBannerTwo(data) {
                 $.each(result.data[0].images, async function (imgIdx, imgUrl) {
                     bannerClone.find(".imgBanner").attr("src", baseUrl + imgUrl);
                     bannerHtml += bannerClone.html();
+                    console.log(baseUrl + imgUrl)
                 });
 
                 $("#homeBanner-2").find(".holdBanner").html(bannerHtml).removeClass('d-none')

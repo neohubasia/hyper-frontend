@@ -9,7 +9,7 @@ marquee(bgcolor="gold")
 .humberger__menu__wrapper
   .humberger__menu__logo
     a(href='#')
-      img.img.border-bottom(src='../img/logo/hyper-marketplace-trans-480x360.png' alt='')
+      img.img.border-bottom(src='../img/logo/hyper-marktetplace-transparent.png' alt='')
   .humberger__menu__cart
     ul
       li.wishItemCount
@@ -36,14 +36,14 @@ marquee(bgcolor="gold")
           a(href='#' onclick="setLanguage('my')") Myanmar
 
     .header__top__right__auth
-        if authUser
-          a.ml-3(href='#')
-            i.fa.fa-user
-            span= authUser.displayName
-        else 
-          a.ml-3(href='/auth/login')
-            i.fa.fa-sign-in
-            span  Login
+      if authUser
+        a.ml-3(href='#')
+          i.fa.fa-user
+          span= authUser.displayName
+      else 
+        a.ml-3(href='/auth/login')
+          i.fa.fa-sign-in
+          span  Login
   nav.humberger__menu__nav.mobile-menu
     ul
       li.home__menu__link.active
@@ -51,7 +51,7 @@ marquee(bgcolor="gold")
       li.shop__menu__link
         a(href='/shop') Shop
       li.store__menu__link
-        a(href='/official_store') Official Store
+        a(href='/official-store') Official Store
       li.pages__menu__link
         a(href='#') Today's Pages
         ul.header__menu__dropdown
@@ -135,7 +135,7 @@ header#navbar.header(style="background: #F3F6FA;")
       .col-lg-3
         .header__logo
           a(href='./')
-            img(src='../img/logo/hyper-marketplace-trans-420x220.png' alt='' width='100' height='50')
+            img(src='../img/logo/hyper-marktetplace-transparent.png' alt='' width='100' height='50')
       .col-lg-6
         nav.header__menu
           ul
@@ -171,6 +171,7 @@ header#navbar.header(style="background: #F3F6FA;")
           .header__cart__price
             | Total Price: 
             span 0MMK
+
     .humberger__open
-      i.fa.fa-bars
+      i.fa.fa-ellipsis-v
 // Header Section End

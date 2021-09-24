@@ -14,6 +14,8 @@
 $.fn.safeUrl = function (args) {
     var that = this;
 
+    console.log(args)
+
     if ($(that).attr('data-safeurl') && $(that).attr('data-safeurl') === 'found') {
         return that;
     }
@@ -25,7 +27,7 @@ $.fn.safeUrl = function (args) {
                 $(that).attr('setbg', args.originUrl)
             },
             success: function () {
-                $(that).css("background-image", "url(" + args.changeUrl + ")");
+                $(that).css("background-image", "url(" + args.changeUrl.replace(/\\/g, '/') + ")");
                 $(that).attr('data-safeurl', 'found');
             }
         });

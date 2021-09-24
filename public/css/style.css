@@ -3056,12 +3056,13 @@ textarea {
 	.humberger__open {
 		display: block;
 		font-size: 30px;
-		color: #343;
+		color: #555;
 		height: 38px;
 		width: 38px;
 		line-height: 33px;
 		text-align: center;
-		border: 3px solid #343;
+		border-radius: 50%;
+		border: 3px solid #555;
 		position: absolute;
 		cursor: pointer;
 		right: 15px;
@@ -3070,7 +3071,7 @@ textarea {
 
 	.header .container {
 		position: relative;
-		background: #fff;
+		background: #F3F6FA;
 		z-index: 1;
 	}
 
@@ -3269,10 +3270,12 @@ textarea {
 	}
 
 	.header__cart {
-		display: none;
-		/* text-align: center;
-		background: #F3F6FA;
-		padding: 10px 0 12px; */
+		position: absolute;
+		right: 0;
+		top: -66px;
+		min-width: 300px;
+		text-align: center;
+		padding: 10px 0 12px;
 	}
 
 	.over_hid {
@@ -3373,12 +3376,13 @@ textarea {
 	.humberger__open {
 		display: block;
 		font-size: 22px;
-		color: #333;
+		color: #555;
 		height: 35px;
 		width: 35px;
 		line-height: 33px;
 		text-align: center;
-		border: 1px solid #333;
+		border-radius: 50%;
+		border: 3px solid #555;
 		cursor: pointer;
 		position: absolute;
 		right: 15px;
@@ -3387,7 +3391,7 @@ textarea {
 
 	.header .container {
 		position: relative;
-		background: #fff;
+		background: #F3F6FA;
 		z-index: 1;
 	}
 
@@ -3585,10 +3589,12 @@ textarea {
 	}
 
 	.header__cart {
-		display: none;
-		/* text-align: center;
-		background: #F3F6FA;
-		padding: 10px 0 12px; */
+		position: absolute;
+		right: 0;
+		top: -66px;
+		min-width: 300px;
+		text-align: center;
+		padding: 10px 0 12px;
 	}
 
 	.over_hid {
