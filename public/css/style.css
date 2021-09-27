@@ -3054,19 +3054,30 @@ textarea {
 	}
 
 	.humberger__open {
-		display: block;
-		font-size: 30px;
-		color: #555;
-		height: 38px;
-		width: 38px;
-		line-height: 33px;
-		text-align: center;
-		border-radius: 50%;
-		border: 3px solid #555;
-		position: absolute;
-		cursor: pointer;
 		right: 15px;
-		top: 22px;
+		top: 25px;
+		width: 30px;
+		height: 30px;
+		font-size: 22px;
+		display: block;
+		cursor: pointer;
+		text-align: center;
+		line-height: 26px;
+		border-radius: 50%;
+		position: absolute;
+		border: 3px solid #555;
+		animation: lighting 3s ease-in-out alternate infinite;
+	}
+
+	@keyframes lighting {
+	  50% {
+		color: #15a2b5;
+	    border: 3px solid #15a2b5
+	  }
+	  100% {
+		color: #ffc105;
+	    border: 3px solid #ffc105
+	  }
 	}
 
 	.header .container {
@@ -3374,19 +3385,30 @@ textarea {
 	}
 
 	.humberger__open {
-		display: block;
-		font-size: 22px;
-		color: #555;
-		height: 35px;
-		width: 35px;
-		line-height: 33px;
-		text-align: center;
-		border-radius: 50%;
-		border: 3px solid #555;
-		cursor: pointer;
-		position: absolute;
 		right: 15px;
-		top: 22px;
+		top: 25px;
+		width: 30px;
+		height: 30px;
+		font-size: 22px;
+		display: block;
+		cursor: pointer;
+		text-align: center;
+		line-height: 26px;
+		border-radius: 50%;
+		position: absolute;
+		border: 3px solid #555;
+		animation: lighting 3s ease-in-out alternate infinite;
+	}
+
+	@keyframes lighting {
+	  50% {
+		color: #15a2b5;
+	    border: 3px solid #15a2b5
+	  }
+	  100% {
+		color: #ffc105;
+	    border: 3px solid #ffc105
+	  }
 	}
 
 	.header .container {

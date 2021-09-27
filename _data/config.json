@@ -1,7 +1,7 @@
 {
     "app": {
         "TITLE": "hyper | marketplace",
-        "BASE": "http://localhost:7878"
+        "BASE": "http://behind-the-hyper.herokuapp.com"
     },
     "jwt": {
         "TEXT": "9E0HU8L48",
