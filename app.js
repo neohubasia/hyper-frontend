@@ -4,7 +4,7 @@ var path = require('path');
 var fs = require('fs');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
-var cookieSession = require('cookie-session');
+// var cookieSession = require('cookie-session');
 var expressSession = require('express-session')({
   secret: 'it3mq1at3mark3tq1ac3',
   resave: false,
