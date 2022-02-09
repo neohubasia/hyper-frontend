@@ -1,15 +1,15 @@
 {
-    "app": {
-        "TITLE": "hyper | marketplace",
-        "BASE": "https://behind-the-hyper.herokuapp.com"
-    },
-    "jwt": {
-        "TEXT": "9E0HU8L48",
-        "HASH": "SHA256",
-        "SECRET": "C57B465081874C256CFD78D9EC226DCD111D03E08E21ABB8DCAF0CF7DA71D362",
-        "credential": {
-            "USERNAME": "N3OXUBL1SN0T633K",
-            "PASSWORD": "ZOZO.4U6.1ST.8D"
-        }
+  "app": {
+    "TITLE": "hyper | marketplace",
+    "BASE": "http://localhost:7878"
+  },
+  "jwt": {
+    "TEXT": "9E0HU8L48",
+    "HASH": "SHA256",
+    "SECRET": "C57B465081874C256CFD78D9EC226DCD111D03E08E21ABB8DCAF0CF7DA71D362",
+    "credential": {
+      "USERNAME": "N3OXUBL1SN0T633K",
+      "PASSWORD": "ZOZO.4U6.1ST.8D"
     }
+  }
 }
