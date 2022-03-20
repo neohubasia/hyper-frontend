@@ -9,9 +9,9 @@ body {
 }
 
 #notfound {
+  height: 60vh;
   position: relative;
-  height: 50vh;
-  background: #222;
+  background: #f9f9f9;
 }
 
 #notfound .notfound {
@@ -38,7 +38,7 @@ body {
 }
 
 .notfound .notfound-404 h1 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -50,46 +50,43 @@ body {
   margin-top: 0px;
   margin-bottom: 0px;
   margin-left: -12px;
-  color: #222;
-  text-transform: uppercase;
-  text-shadow: -1px -1px 0px #15a5b5,
-    1px 1px 0px #ff005a;
+  color: #15a5b5;
   letter-spacing: -20px;
+  text-transform: uppercase;
+  text-shadow: -1px -1px 0px #15a5b5, 0px 5px 5px #ffc105;
 }
 
-
 .notfound .notfound-404 h2 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   position: absolute;
   left: 0;
   right: 0;
   top: 110px;
+  margin: 0;
   font-size: 42px;
   font-weight: 700;
-  color: #fff;
+  color: #f9f9f9;
   text-transform: uppercase;
-  text-shadow: 0px 2px 0px #15a5b5;
+  text-shadow: 0px 3px 3px #ffc105;
   letter-spacing: 13px;
-  margin: 0;
 }
 
-.notfound a {
-  font-family: 'Montserrat', sans-serif;
+.notfound .notfound-link a {
   display: inline-block;
-  text-transform: uppercase;
-  color: #15a5b5;
-  text-decoration: none;
-  border: 2px solid;
-  background: transparent;
   padding: 10px 40px;
+  color: #ffc105;
+  background: transparent;
+  border: 2px solid;
   font-size: 14px;
   font-weight: 700;
-  -webkit-transition: 0.2s all;
+  text-decoration: none;
+  text-transform: uppercase;
   transition: 0.2s all;
+  -webkit-transition: 0.2s all;
 }
 
 .notfound a:hover {
-  color: #ff005a;
+  color: #15a5b5;
 }
 
 @media only screen and (max-width: 767px) {
@@ -100,6 +97,6 @@ body {
 
 @media only screen and (max-width: 480px) {
   .notfound .notfound-404 h1 {
-    font-size: 180px;
+    font-size: 182px;
   }
 }

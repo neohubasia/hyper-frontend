@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var conf = require("../../_data/config.json");
+var conf = require("../../config/index.json");
 var isLogin = require("connect-ensure-login").ensureLoggedIn;
 var axiosHandler = require("../../library/axios-handler");
 

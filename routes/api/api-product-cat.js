@@ -8,7 +8,6 @@ router.get("/api/getProductCategory", function (req, res, next) {
       params: req.query,
     })
     .then(function (response) {
-      console.log("HELLO WORLD");
       res.send(response.data);
     })
     .catch(function (error) {

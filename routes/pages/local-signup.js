@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var conf = require("../../_data/config.json");
+var conf = require("../../config/index.json");
 var axiosHandler = require("../../library/axios-handler");
 
 var url = { signup: "/auth/signup" };

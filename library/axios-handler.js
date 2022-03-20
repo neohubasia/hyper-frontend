@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 const axios = require("axios");
-const conf = require("../_data/config.json");
+const conf = require("../config/index.json");
 const API_URL = process.env.API_URL;
 
 // Step-1: Create a new Axios instance with a custom config.

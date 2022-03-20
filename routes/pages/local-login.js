@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var passport = require("passport");
-var conf = require("../../_data/config.json");
+var conf = require("../../config/index.json");
 
 var url = { login: "/auth/login", logout: "/auth/logout" };
 
