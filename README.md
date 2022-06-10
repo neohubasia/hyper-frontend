@@ -1,6 +1,6 @@
 # Hyper E-Commerce
 
-Startup project with my two friends, using tech-stack Node.js, Express.js, Pug, MongoDB. So, we all design project architectures and databases based on ideas, and then which is developed.
+This marketplace is my very first e-commerce project. It is mainly provided to facilitate the order and delivery of products from suppliers to customers.
 
 ---
 
